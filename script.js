@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Smooth Scrolling for Nav Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            
+
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth'
@@ -30,28 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Select elements to animate
     const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content');
-    
+
     animateElements.forEach(el => {
         // Set initial state
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        
+
         // Observe
         observer.observe(el);
     });
 
-    // Mouse Move Parallax Effect for Bubbles
+    // Paradise Cloud Parallax (Optional - subtle mouse movement)
     document.addEventListener('mousemove', (e) => {
         const x = e.clientX / window.innerWidth;
         const y = e.clientY / window.innerHeight;
-        
-        document.querySelectorAll('.bubbles span').forEach((bubble, index) => {
-            const speed = (index + 1) * 2;
+
+        document.querySelectorAll('.cloud').forEach((cloud, index) => {
+            const speed = (index + 1) * 20;
             const xOffset = (window.innerWidth / 2 - e.clientX) / speed;
             const yOffset = (window.innerHeight / 2 - e.clientY) / speed;
-            
-            bubble.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+
+            // Apply translation on top of the float animation
+            // Using margin instead of transform to avoid conflict with keyframes
+            cloud.style.marginLeft = `${xOffset}px`;
+            cloud.style.marginTop = `${yOffset}px`;
         });
     });
 });
