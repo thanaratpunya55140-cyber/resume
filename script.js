@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Select elements to animate
-    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content');
+    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content, .info-step');
 
     animateElements.forEach(el => {
         // Set initial state
@@ -57,4 +57,36 @@ document.addEventListener('DOMContentLoaded', () => {
             cloud.style.marginTop = `${yOffset}px`;
         });
     });
+    // Modal Logic
+    const openModalBtn = document.getElementById('open-research-modal');
+    const closeModalBtn = document.querySelector('.modal-close');
+    const modal = document.getElementById('research-modal');
+
+    if (openModalBtn && modal) {
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close on clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 });

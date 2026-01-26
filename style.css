@@ -584,6 +584,429 @@ nav {
 }
 
 /* Footer */
+/* Research Infographic */
+.infographic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.info-step {
+    position: relative;
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.info-step:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--gold);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+}
+
+.step-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.info-step h3 {
+    font-size: 1.3rem;
+    color: var(--light-slate);
+    margin-bottom: 0.5rem;
+}
+
+.info-step p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
+}
+
+.citation {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 10px;
+    font-style: italic;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 5px;
+}
+
+/* Physics Decoration for Infographic */
+#research-infographic {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.physics-particle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulseParticle 8s infinite alternate;
+}
+
+@keyframes pulseParticle {
+    from {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    to {
+        transform: scale(1.5);
+        opacity: 0.6;
+    }
+}
+
+/* Modal Base */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(135, 206, 235, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: none;
+    /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 4rem 3rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: var(--slate);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2100;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+}
+
+/* Modal Body Content */
+.research-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.research-para h3 {
+    color: var(--gold);
+    border-left: 5px solid var(--gold);
+    padding-left: 15px;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.research-para p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}
+
+.research-para cite {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.highlight-box {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px dashed var(--gold);
+}
+
+/* Research Discussion Section */
+#research-discussion {
+    background: linear-gradient(to bottom, #ffffff, #f0f7ff);
+    padding: 100px 0;
+}
+
+.discussion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.discussion-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.discussion-card:hover {
+    transform: translateX(10px);
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.discussion-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.discussion-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.discussion-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.discussion-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .discussion-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.data-viz {
+    background: rgba(255, 215, 0, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px dashed var(--gold);
+}
+
+.data-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.data-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.discussion-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.discussion-text p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.reference-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    border-left: 3px solid #ddd;
+}
+
+.reference-box i {
+    color: var(--gold);
+    margin-right: 8px;
+}
+
+/* Research Recommendations Section */
+#research-recommendations {
+    background: linear-gradient(to top, #ffffff, #e3f2fd);
+    padding: 100px 0;
+}
+
+.rec-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.rec-category-title {
+    font-size: 1.8rem;
+    color: var(--light-slate);
+    border-left: 6px solid var(--gold);
+    padding-left: 20px;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.rec-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.rec-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: var(--gold);
+}
+
+.rec-icon {
+    font-size: 2.2rem;
+    color: var(--gold);
+}
+
+.rec-text h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.rec-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+    text-align: justify;
+}
+
+.future-rec-card {
+    background: rgba(255, 215, 0, 0.05);
+    border: 2px dashed var(--gold);
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .future-rec-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animations */
+.fade-in-scale {
+    animation: fadeInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Prevent scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
 footer {
     padding: 3rem;
     text-align: center;
