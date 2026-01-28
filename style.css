@@ -1016,6 +1016,240 @@ footer {
     border-top: 1px solid #eee;
 }
 
+
+/* Lesson Plan Section Styles */
+#lesson-plan {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 215, 0, 0.05) 100%);
+}
+
+.lesson-header-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: rgba(44, 62, 80, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.lesson-standards {
+    margin-bottom: 4rem;
+}
+
+.lesson-standards h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-standards h3 i {
+    color: var(--gold);
+}
+
+.standard-content {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid var(--gold);
+}
+
+.standard-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.standard-content .highlight-box {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px dashed var(--gold);
+    margin-top: 1.5rem;
+}
+
+.standard-content .highlight-box p {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--light-slate);
+}
+
+.lesson-header-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lesson-header-info i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+.lesson-header-info strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--slate);
+    text-transform: uppercase;
+}
+
+.lesson-header-info span {
+    font-weight: 600;
+    color: var(--light-slate);
+}
+
+.lesson-objectives,
+.teaching-process,
+.assessment-section {
+    margin-bottom: 4rem;
+}
+
+.lesson-objectives h3,
+.teaching-process h3,
+.assessment-section h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-objectives h3 i,
+.teaching-process h3 i,
+.assessment-section h3 i {
+    color: var(--gold);
+}
+
+.objective-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.obj-card {
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.obj-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.obj-icon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 4rem;
+    font-weight: 900;
+    opacity: 0.1;
+    color: var(--gold);
+}
+
+.obj-card h4 {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.obj-card p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* 5E Timeline */
+.ee-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.ee-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.ee-step {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 30px;
+}
+
+.ee-number {
+    position: absolute;
+    left: -16px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: #2c3e50;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    z-index: 2;
+}
+
+.ee-content {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+}
+
+.ee-content h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.ee-content p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Assessment */
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.assess-item {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.assess-label {
+    display: block;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.assess-value {
+    color: var(--light-slate);
+    font-size: 0.95rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
