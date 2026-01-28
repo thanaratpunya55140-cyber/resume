@@ -1099,15 +1099,197 @@ footer {
     color: var(--light-slate);
 }
 
-.lesson-objectives,
-.teaching-process,
-.assessment-section {
-    margin-bottom: 4rem;
+/* Lesson Plan Section New Styles */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.lesson-objectives h3,
-.teaching-process h3,
-.assessment-section h3 {
+.lesson-sub-section h3 {
+    font-size: 1.4rem;
+    color: var(--light-slate);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-sub-section h3 i {
+    color: var(--gold);
+}
+
+.standard-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 5px solid var(--gold);
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.02);
+}
+
+.objective-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.obj-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.badge {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.badge.k {
+    background: #3498db;
+}
+
+.badge.p {
+    background: #9b59b6;
+}
+
+.badge.a {
+    background: #2ecc71;
+}
+
+.lesson-substance {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 248, 225, 0.5) 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.lesson-substance h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-substance h3 i {
+    color: var(--gold);
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.formula-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.formula-card h4 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.formula-card code {
+    display: block;
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1rem;
+    border-left: 3px solid #eee;
+}
+
+.formula-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.f-item span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #7f8c8d;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.lesson-extra-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.lesson-extra-grid h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-extra-grid h3 i {
+    color: var(--gold);
+}
+
+.check-list {
+    list-style: none;
+}
+
+.check-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.check-list i {
+    color: #2ecc71;
+}
+
+.attribute-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--gold);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.teaching-process h3 {
     font-size: 1.5rem;
     color: #2c3e50;
     margin-bottom: 2rem;
@@ -1116,141 +1298,228 @@ footer {
     gap: 10px;
 }
 
-.lesson-objectives h3 i,
-.teaching-process h3 i,
-.assessment-section h3 i {
+.teaching-process h3 i {
     color: var(--gold);
 }
 
-.objective-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.e-timeline {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
-.obj-card {
-    padding: 2rem;
+.e-step {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    position: relative;
     transition: all 0.3s ease;
-    overflow: hidden;
 }
 
-.obj-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+.e-step:hover {
+    transform: translateX(10px);
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-.obj-icon {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 4rem;
-    font-weight: 900;
-    opacity: 0.1;
-    color: var(--gold);
+.e-head {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.obj-card h4 {
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-}
-
-.obj-card p {
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-/* 5E Timeline */
-.ee-timeline {
-    position: relative;
-    padding-left: 20px;
-}
-
-.ee-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-}
-
-.ee-step {
-    position: relative;
-    margin-bottom: 2.5rem;
-    padding-left: 30px;
-}
-
-.ee-number {
-    position: absolute;
-    left: -16px;
-    top: 0;
-    width: 32px;
-    height: 32px;
-    background: #2c3e50;
-    color: var(--gold);
-    border: 2px solid var(--gold);
+.e-circle {
+    width: 45px;
+    height: 45px;
+    background: var(--gold);
+    color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+}
+
+.e-body p {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+}
+
+.e-flex-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.e-flex-content.reversed {
+    flex-direction: row-reverse;
+}
+
+.e-text {
+    flex: 1;
+}
+
+.e-visual {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.lesson-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.lesson-img:hover {
+    transform: scale(1.02);
+}
+
+.img-caption {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+
+    .e-flex-content,
+    .e-flex-content.reversed {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .e-visual {
+        flex: 1;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 1.5rem;
+    }
+}
+
+.video-link {
+    color: #e74c3c;
     font-weight: bold;
-    font-size: 0.8rem;
-    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.ee-content {
-    background: rgba(255, 255, 255, 0.3);
-    padding: 1.5rem;
+.question-list {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 1rem 2rem;
     border-radius: 10px;
-    border-left: 4px solid var(--gold);
+    font-style: italic;
 }
 
-.ee-content h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: #2c3e50;
+.summary-box {
+    background: #f0f7ff;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    margin-bottom: 1rem;
 }
 
-.ee-content p {
-    font-size: 0.95rem;
-    margin: 0;
+.example-box {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px dashed #d4ac0d;
+    font-family: inherit;
 }
 
-/* Assessment */
-.assessment-grid {
+.e-step-group {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
 }
 
-.assess-item {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 215, 0, 0.1);
+.assessment-section h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.assess-label {
-    display: block;
-    font-weight: bold;
+.assessment-section h3 i {
     color: var(--gold);
-    margin-bottom: 0.5rem;
 }
 
-.assess-value {
-    color: var(--light-slate);
-    font-size: 0.95rem;
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.5rem;
 }
 
-/* Responsive */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+th {
+    background: #34495e;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.equipment-list h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.equipment-list h3 i {
+    color: var(--gold);
+}
+
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tools-grid span {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.tools-grid i {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -1266,5 +1535,11 @@ footer {
 
     .section {
         padding: 60px 0;
+    }
+
+    .lesson-grid,
+    .lesson-extra-grid,
+    .e-step-group {
+        grid-template-columns: 1fr;
     }
 }

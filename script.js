@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Select elements to animate
-    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content, .info-step, .obj-card, .ee-step');
+    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content, .info-step, .obj-mini-card, .formula-card, .e-step, .tag');
 
     animateElements.forEach(el => {
         // Set initial state
