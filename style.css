@@ -2506,3 +2506,168 @@ td {
     margin-bottom: 2rem;
     color: var(--gold);
 }
+
+/* Detailed Lesson Plan Extensions */
+.lesson-sub-section {
+    margin-bottom: 2rem;
+}
+
+.lesson-sub-section h3 {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold-soft);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.standard-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.substance-content {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--gold);
+    margin-top: 1rem;
+}
+
+.substance-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.substance-content ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.substance-content ul li i {
+    color: var(--gold);
+    margin-right: 0.8rem;
+    width: 20px;
+    text-align: center;
+}
+
+.substance-content ul li::before {
+    display: none;
+    /* Hide bullet if icon is present */
+}
+
+/* Ensure list items without icons still look okay */
+.substance-content ul li:not(:has(i))::before {
+    content: "•";
+    display: inline-block;
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.activity-detail {
+    margin-top: 2rem;
+}
+
+.a-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.a-step h4 {
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.a-step .step-num {
+    background: var(--gold);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.qa-box {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border-left: 3px solid var(--navy);
+}
+
+.qa-item {
+    margin-bottom: 0.8rem;
+}
+
+.qa-item .q {
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.qa-item .a {
+    color: #555;
+    font-style: italic;
+    padding-left: 1rem;
+}
+
+.lesson-image {
+    width: 100%;
+    border-radius: 12px;
+    margin: 1rem 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.example-box {
+    background: linear-gradient(135deg, #1a2a6c, #2a4858);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+}
+
+.example-box h4 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.equation {
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.calc-steps {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.assessment-table th {
+    background: var(--navy);
+    color: white;
+}
+
+.assessment-table td {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .lesson-layout {
+        grid-template-columns: 1fr;
+    }
+}

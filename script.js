@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Select elements to animate
-    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content, .info-step, .obj-mini-card, .formula-card, .e-step, .tag, .distinction-card, .principle-card, .benefit-item, .safety-card, .history-card, .flow-step, .benefit-card, .safety-philosophy, .history-lessons, .c-step, .reactor-card, .barrier-card, .waste-step, .pros-card, .cons-card, .tds-item, .standard-category-card, .b-layer, .impact-card');
+    const animateElements = document.querySelectorAll('.glass-card, .section-title, .hero-content, .info-step, .obj-mini-card, .formula-card, .e-step, .tag, .distinction-card, .principle-card, .benefit-item, .safety-card, .history-card, .flow-step, .benefit-card, .safety-philosophy, .history-lessons, .c-step, .reactor-card, .barrier-card, .waste-step, .pros-card, .cons-card, .tds-item, .standard-category-card, .b-layer, .impact-card, .e-step-card, .lesson-preview-card');
 
     animateElements.forEach(el => {
         // Set initial state
