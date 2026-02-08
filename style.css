@@ -1811,3 +1811,698 @@ td {
         grid-template-columns: 1fr;
     }
 }
+
+/* Nuclear Report Styles - Vertical Sequential Flow */
+.report-action-top {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.report-action-top .btn {
+    font-size: 1.1rem;
+    padding: 1.2rem 2.5rem;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.report-action-top .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(253, 185, 49, 0.5);
+}
+
+.nuclear-intro-sequential {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.intro-block {
+    padding: 3.5rem;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+}
+
+.intro-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.intro-block h3 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.intro-block h3 i {
+    color: var(--gold);
+}
+
+.intro-block p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.nuclear-deep-dive {
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.sub-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+}
+
+.full-width-card {
+    width: 100%;
+    padding: 3.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+}
+
+.full-width-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.science-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 1rem;
+}
+
+.science-tag {
+    background: var(--gold);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.9rem;
+}
+
+.science-card h4 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.science-content.vertical-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.science-img-box-large {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fdfdfd;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.science-img-box-large img {
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    padding: 1rem;
+    transition: transform 0.6s ease;
+}
+
+.full-width-card:hover .science-img-box-large img {
+    transform: scale(1.02);
+}
+
+.img-caption {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    font-size: 1rem;
+    color: #666;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.science-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+.fusion-highlights {
+    padding: 4rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 35px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.fusion-highlights h4 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3.5rem;
+    color: #2c3e50;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+}
+
+.h-item {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.h-item:hover {
+    background: white;
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
+}
+
+.h-item i {
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.h-item span {
+    font-size: 1.1rem;
+    display: block;
+}
+
+.nuclear-sectors-list.sequential-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.sector-block {
+    padding: 4rem;
+    border-radius: 40px;
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.sector-block:hover {
+    background: #fff;
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.top-border-gold {
+    border-top: 6px solid var(--gold);
+}
+
+.sector-header {
+    margin-bottom: 3rem;
+}
+
+.sector-header h3 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.sector-image-wide {
+    width: 100%;
+    height: 400px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sector-image-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.sector-block:hover .sector-image-wide img {
+    transform: scale(1.05);
+}
+
+.eee-badge-container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.eee-badge {
+    background: white;
+    padding: 1rem 1.8rem;
+    border-radius: 12px;
+    border: 2px solid var(--gold);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.eee-badge:hover {
+    background: var(--gold);
+    color: white;
+}
+
+.sector-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.sub-item {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 6px solid var(--gold);
+    font-size: 1.1rem;
+}
+
+.detailed-list {
+    list-style: none;
+    padding: 0;
+}
+
+.detailed-list li {
+    padding: 1.5rem 0 1.5rem 3.5rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.detailed-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-size: 1.8rem;
+}
+
+.sector-visual-icon-full {
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 10rem;
+    margin-bottom: 2rem;
+}
+
+.citation {
+    display: block;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #888;
+    font-style: italic;
+}
+
+@media (max-width: 992px) {
+
+    .full-width-card,
+    .sector-block {
+        padding: 2.5rem;
+    }
+
+    .science-img-box-large img,
+    .sector-image-wide {
+        height: 300px;
+    }
+
+    .sector-header h3 {
+        font-size: 1.8rem;
+    }
+
+    .sub-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Nuclear Safety Section */
+.nuclear-safety-section,
+.waste-management-section,
+.historical-lessons-section {
+    margin-top: 4rem;
+}
+
+.safety-barrier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.barrier-card {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-top: 3px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.barrier-card:hover {
+    transform: translateY(-5px);
+    background: white;
+}
+
+.barrier-card i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.barrier-card span {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Waste Management Section */
+.waste-flow-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.waste-step {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.waste-step i {
+    font-size: 3rem;
+    color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* History Grid */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.history-card {
+    padding: 2rem;
+    border-left: 5px solid #e74c3c;
+    /* Red for warning/history */
+}
+
+.history-date {
+    font-weight: 700;
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Pros & Cons Section */
+.pros-cons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.pros-card h4 {
+    color: #2ecc71;
+    margin-bottom: 1.5rem;
+}
+
+.cons-card h4 {
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+}
+
+.pros-card ul,
+.cons-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pros-card li,
+.cons-card li {
+    padding: 0.8rem 0 0.8rem 2.5rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pros-card li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+}
+
+.cons-card li::before {
+    content: '\f057';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+}
+
+/* Radiation Protection (TDS) */
+.radiation-protection-section {
+    margin-top: 4rem;
+}
+
+.tds-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: #666;
+}
+
+.tds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.tds-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    border-bottom: 4px solid var(--gold);
+    transition: all 0.3s ease;
+}
+
+.tds-item:hover {
+    background: white;
+    transform: translateY(-8px);
+}
+
+.tds-icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.tds-item h4 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Expanded Nuclear Safety Styles */
+.safety-intro-text {
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.safety-standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.standard-category-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.standard-category-card h4 {
+    margin-bottom: 1rem;
+    color: var(--gold);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.category-desc {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.standard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.standard-list li {
+    padding: 0.8rem 0 0.8rem 2.5rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+}
+
+.standard-list li:last-child {
+    border-bottom: none;
+}
+
+.standard-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+/* 7-Layer Barrier Timeline */
+.safety-barriers-7-layers {
+    margin-top: 3rem;
+    padding: 2.5rem;
+}
+
+.barrier-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.b-layer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    border-left: 5px solid var(--gold);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.b-layer:hover {
+    transform: translateX(10px);
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.b-num {
+    width: 35px;
+    height: 35px;
+    background: var(--gold);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.b-info {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Impact Analysis Grid */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.impact-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.impact-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.impact-header i {
+    font-size: 2.2rem;
+}
+
+.society-header i {
+    color: #3498db;
+}
+
+.environment-header i {
+    color: #2ecc71;
+}
+
+.economic-header i {
+    color: #f1c40f;
+}
+
+.impact-card p {
+    line-height: 1.7;
+    color: #555;
+    font-size: 1rem;
+}
+
+.center-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--gold);
+}
