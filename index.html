@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 
 <head>
@@ -18,6 +18,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lab-report-styles.css">
 </head>
 
 <body>
@@ -45,6 +46,7 @@
       <li><a href="#nuclear-energy">รายงานพลังงานนิวเคลียร์</a></li>
       <li><a href="#research-infographic">งานวิจัย</a></li>
       <li><a href="#lesson-plan">แผนการสอน</a></li>
+      <li><a href="#lab-report">การหาค่าความร้อนของเปลือกข้าว</a></li>
       <li><a href="#contact">ติดต่อ</a></li>
     </ul>
   </nav>
@@ -879,6 +881,27 @@
       <h2 class="section-title">ความสำเร็จทางวิชาการ <span class="gold-text">Academic Distinctions</span></h2>
 
       <div class="distinction-grid">
+        <!-- New Conference Card -->
+        <a href="images/poster_Page_01.jpg" target="_blank" class="card-link">
+          <div class="distinction-card presentation-card">
+            <div class="new-badge">NEW</div>
+            <div class="card-glow"></div>
+            <div class="card-visual">
+              <img src="images/poster_Page_01.jpg" alt="National Conference Poster"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            </div>
+            <div class="card-icon"><i class="fa-solid fa-certificate"></i></div>
+            <div class="card-content">
+              <span class="category-tag">National Conference</span>
+              <h3>ครุศาสตร์ศึกษา ครั้งที่ 8</h3>
+              <p class="project-title">
+                ได้เข้าร่วมกิจกรรมการประชุมวิชาการระดับชาติ "ครุศาสตร์ศึกษา" ครั้งที่ 8</p>
+              <div class="view-pdf-hint"><i class="fa-solid fa-image"></i> คลิกเพื่อดูภาพกิจกรรม</div>
+            </div>
+          </div>
+        </a>
+
+
         <!-- 1. Research Presentation Card -->
         <a href="SCI-O45-ชัยณรงค์-รักธรรม.pdf" target="_blank" class="card-link">
           <div class="distinction-card presentation-card">
@@ -951,6 +974,798 @@
             </div>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Lab Report Section (NEW Dedicated Section) -->
+  <section id="lab-report" class="section">
+    <div class="container glass-card">
+      <h2 class="section-title">รายงานปฏิบัติการทดลอง เรื่อง การหาค่าความร้อนของเปลือกข้าว <span class="gold-text">Lab
+          Report: Calorific Value of Rice Husk</span></h2>
+
+      <div class="lab-infographic-container">
+
+        <!-- Background Section -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-book-open"></i> ความเป็นมาและความสำคัญ</h3>
+          <p class="academic-text">
+            ประเทศไทยเป็นประเทศเกษตรกรรมที่มีการปลูกข้าวเป็นพืชเศรษฐกิจหลัก ผลพลอยได้จากการสีข้าวเปลือกคือ
+            <strong>"แกลบ" (Rice Husk)</strong> ซึ่งคิดเป็นสัดส่วนประมาณ 20-22% ของน้ำหนักข้าวเปลือก
+            ในอดีตแกลบอาจถูกมองว่าเป็นของเหลือทิ้ง แต่ในปัจจุบัน แกลบถือเป็น<strong>เชื้อเพลิงชีวมวล (Biomass)</strong>
+            ที่สำคัญมากในการผลิตกระแสไฟฟ้าและความร้อนในภาคอุตสาหกรรม เนื่องจากมีราคาถูกและหาได้ง่ายในท้องถิ่น
+          </p>
+        </div>
+
+        <!-- Properties Section -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-flask"></i> คุณสมบัติทางกายภาพและเคมี</h3>
+          <div class="properties-grid">
+            <div class="prop-card">
+              <i class="fa-solid fa-droplet"></i>
+              <h4>ความชื้น</h4>
+              <p class="prop-value-large">9-12%</p>
+              <p class="prop-desc">ต่ำกว่าชีวมวลชนิดอื่น ทำให้จุดติดไฟได้ง่าย</p>
+            </div>
+            <div class="prop-card">
+              <i class="fa-solid fa-weight-hanging"></i>
+              <h4>ความหนาแน่น</h4>
+              <p class="prop-value-large">90-150 kg/m³</p>
+              <p class="prop-desc">ต่ำ ทำให้เปลืองพื้นที่จัดเก็บและขนส่ง</p>
+            </div>
+            <div class="prop-card">
+              <i class="fa-solid fa-fire"></i>
+              <h4>ปริมาณเถ้า</h4>
+              <p class="prop-value-large">15-20%</p>
+              <p class="prop-desc">สูงมาก องค์ประกอบหลักคือซิลิกา (SiO₂)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calorific Value Section -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-temperature-high"></i> ค่าความร้อนของแกลบ</h3>
+          <div class="calorific-comparison">
+            <div class="cal-type">
+              <h4>ค่าความร้อนสูง (HHV)</h4>
+              <p class="cal-value">3,300 - 3,600 kcal/kg</p>
+              <p class="cal-desc">รวมความร้อนแฝงของการกลายเป็นไอของน้ำ (13.8 - 15.1 MJ/kg)</p>
+            </div>
+            <div class="cal-type">
+              <h4>ค่าความร้อนต่ำ (LHV)</h4>
+              <p class="cal-value">3,000 - 3,200 kcal/kg</p>
+              <p class="cal-desc">สะท้อนการใช้งานจริงในเตาเผา (ณ ความชื้นมาตรฐานโรงสี)</p>
+            </div>
+          </div>
+          <div class="standard-value">
+            <i class="fa-solid fa-star"></i>
+            <p><strong>ค่ามาตรฐานอ้างอิงในประเทศไทย:</strong> ประมาณ <span class="highlight-value">3,300 kcal/kg</span>
+              ที่ความชื้น 10-12%</p>
+          </div>
+        </div>
+
+        <!-- Fuel Comparison Table -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-chart-bar"></i> การเปรียบเทียบกับเชื้อเพลิงชนิดอื่น</h3>
+          <div class="table-wrapper">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>ชนิดเชื้อเพลิง</th>
+                  <th>ค่าความร้อน (kcal/kg)</th>
+                  <th>หมายเหตุ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td><strong>แกลบ (Rice Husk)</strong></td>
+                  <td><strong>3,300 - 3,600</strong></td>
+                  <td>ขี้เถ้าสูงมาก</td>
+                </tr>
+                <tr>
+                  <td>ไม้ฟืน / ไม้สับ</td>
+                  <td>2,500 - 3,800</td>
+                  <td>ขึ้นอยู่กับความชื้นอย่างมาก</td>
+                </tr>
+                <tr>
+                  <td>ถ่านหิน (Lignite)</td>
+                  <td>2,500 - 4,000</td>
+                  <td>ค่ากำมะถันสูง</td>
+                </tr>
+                <tr>
+                  <td>ถ่านหิน (Bituminous)</td>
+                  <td>6,000 - 7,000</td>
+                  <td>ให้พลังงานสูง</td>
+                </tr>
+                <tr>
+                  <td>น้ำมันเตา</td>
+                  <td>9,800 - 10,000</td>
+                  <td>ราคาสูง</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Experimental Data - Trial 1 -->
+        <div class="lab-section-block glass-card experimental-data">
+          <h3><i class="fa-solid fa-vial"></i> ผลการทดลองครั้งที่ 1</h3>
+
+          <div class="trial-summary">
+            <div class="trial-param">
+              <span class="param-label">เชื้อเพลิง:</span>
+              <span class="param-value">เปลือกข้าว</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">น้ำหนัก:</span>
+              <span class="param-value">1.0 g</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">ความยาวฟิวส์:</span>
+              <span class="param-value">6.5 cm</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">อุณหภูมิห้อง:</span>
+              <span class="param-value">25°C</span>
+            </div>
+          </div>
+
+          <div class="calculation-results">
+            <h4>ผลการคำนวณ</h4>
+            <div class="result-grid">
+              <div class="result-item">
+                <span class="result-label">Δt</span>
+                <span class="result-value">1.1°C</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">H<sub>g</sub></span>
+                <span class="result-value">2,652.16 Btu/lb</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ความชื้น</span>
+                <span class="result-value">14.94%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ปริมาณเถ้า</span>
+                <span class="result-value">15%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ความหนาแน่น</span>
+                <span class="param-value">0.15 g/cm³</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Temperature Data Table -->
+          <div class="data-table-section">
+            <h4><i class="fa-solid fa-table"></i> ตารางบันทึกอุณหภูมิแบบละเอียด</h4>
+            <p class="table-note">ข้อมูลอุณหภูมิที่บันทึกทุก 15 วินาที ตลอดการทดลอง</p>
+            <div class="detailed-table-container">
+              <table class="recreated-data-table">
+                <thead>
+                  <tr>
+                    <th>วินาทีที่</th>
+                    <th>เวลา (นาที:วินาที)</th>
+                    <th>อุณหภูมิ (°C)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>00:00</td>
+                    <td class="marker-cell">26.2 <span class="marker-label">จุด a₀</span></td>
+                  </tr>
+                  <tr>
+                    <td>60</td>
+                    <td>01:00</td>
+                    <td>26.2</td>
+                  </tr>
+                  <tr>
+                    <td>120</td>
+                    <td>02:00</td>
+                    <td>26.3</td>
+                  </tr>
+                  <tr>
+                    <td>180</td>
+                    <td>03:00</td>
+                    <td>26.3</td>
+                  </tr>
+                  <tr>
+                    <td>240</td>
+                    <td>04:00</td>
+                    <td>26.3</td>
+                  </tr>
+                  <tr>
+                    <td>300</td>
+                    <td>05:00</td>
+                    <td class="marker-cell">26.3 <span class="marker-label">จุด a</span></td>
+                  </tr>
+                  <tr>
+                    <td>360</td>
+                    <td>06:00</td>
+                    <td>26.7</td>
+                  </tr>
+                  <tr>
+                    <td>390</td>
+                    <td>06:30</td>
+                    <td class="marker-cell">26.9 <span class="marker-label">จุด b</span></td>
+                  </tr>
+                  <tr>
+                    <td>420</td>
+                    <td>07:00</td>
+                    <td>27.2</td>
+                  </tr>
+                  <tr>
+                    <td>480</td>
+                    <td>08:00</td>
+                    <td class="marker-cell">27.4 <span class="marker-label">จุด c</span></td>
+                  </tr>
+                  <tr>
+                    <td>540</td>
+                    <td>09:00</td>
+                    <td class="marker-cell">27.5 <span class="marker-label">จุด d</span></td>
+                  </tr>
+                  <tr>
+                    <td>765</td>
+                    <td>12:45</td>
+                    <td>27.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experimental Data - Trial 2 -->
+        <div class="lab-section-block glass-card experimental-data">
+          <h3><i class="fa-solid fa-vial"></i> ผลการทดลองครั้งที่ 2</h3>
+
+          <div class="trial-summary">
+            <div class="trial-param">
+              <span class="param-label">เชื้อเพลิง:</span>
+              <span class="param-value">เปลือกข้าว</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">น้ำหนัก:</span>
+              <span class="param-value">1.0 g</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">ความยาวฟิวส์:</span>
+              <span class="param-value">5.7 cm</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">อุณหภูมิห้อง:</span>
+              <span class="param-value">25°C</span>
+            </div>
+          </div>
+
+          <div class="calculation-results">
+            <h4>ผลการคำนวณ</h4>
+            <div class="result-grid">
+              <div class="result-item">
+                <span class="result-label">Δt</span>
+                <span class="result-value">3.72°C</span>
+              </div>
+              <div class="result-item highlight-best">
+                <span class="result-label">H<sub>g</sub></span>
+                <span class="result-value">9,011.61 Btu/lb</span>
+              </div>
+              <div class="result-item highlight-best">
+                <span class="result-label">ความชื้น</span>
+                <span class="result-value">4%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ปริมาณเถ้า</span>
+                <span class="result-value">4%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ความหนาแน่น</span>
+                <span class="param-value">0.15 g/cm³</span>
+              </div>
+            </div>
+            <p class="trial-note"><i class="fa-solid fa-star"></i> ครั้งที่ 2
+              ให้ค่าความร้อนสูงสุดเนื่องจากความชื้นต่ำที่สุด</p>
+          </div>
+
+          <!-- Detailed Temperature Data Table (Recreated) -->
+          <div class="data-table-section">
+            <h4><i class="fa-solid fa-table"></i> ตารางบันทึกอุณหภูมิแบบละเอียด</h4>
+            <div class="detailed-table-container">
+              <table class="recreated-data-table">
+                <thead>
+                  <tr>
+                    <th>วินาทีที่</th>
+                    <th>เวลา (นาที:วินาที)</th>
+                    <th>อุณหภูมิ (°C)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>00:00</td>
+                    <td class="marker-cell">26.5 <span class="marker-label">จุด a₀</span></td>
+                  </tr>
+                  <tr>
+                    <td>60</td>
+                    <td>01:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>120</td>
+                    <td>02:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>180</td>
+                    <td>03:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>240</td>
+                    <td>04:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>300</td>
+                    <td>05:00</td>
+                    <td class="marker-cell">26.5 <span class="marker-label">จุด a</span></td>
+                  </tr>
+                  <tr>
+                    <td>360</td>
+                    <td>06:00</td>
+                    <td>26.8</td>
+                  </tr>
+                  <tr>
+                    <td>375</td>
+                    <td>06:15</td>
+                    <td>27.1</td>
+                  </tr>
+                  <tr>
+                    <td>390</td>
+                    <td>06:30</td>
+                    <td class="marker-cell">27.1 <span class="marker-label">จุด b</span></td>
+                  </tr>
+                  <tr>
+                    <td>420</td>
+                    <td>07:00</td>
+                    <td>27.4</td>
+                  </tr>
+                  <tr>
+                    <td>435</td>
+                    <td>07:15</td>
+                    <td>27.5</td>
+                  </tr>
+                  <tr>
+                    <td>450</td>
+                    <td>07:30</td>
+                    <td>27.5</td>
+                  </tr>
+                  <tr>
+                    <td>465</td>
+                    <td>07:45</td>
+                    <td>27.6</td>
+                  </tr>
+                  <tr>
+                    <td>480</td>
+                    <td>08:00</td>
+                    <td class="marker-cell">27.6 <span class="marker-label">จุด c</span></td>
+                  </tr>
+                  <tr>
+                    <td>495</td>
+                    <td>08:15</td>
+                    <td>27.7</td>
+                  </tr>
+                  <tr>
+                    <td>540</td>
+                    <td>09:00</td>
+                    <td class="marker-cell">27.8 <span class="marker-label">จุด d</span></td>
+                  </tr>
+                  <tr>
+                    <td>765</td>
+                    <td>12:45</td>
+                    <td>27.8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experimental Data - Trial 3 -->
+        <div class="lab-section-block glass-card experimental-data">
+          <h3><i class="fa-solid fa-vial"></i> ผลการทดลองครั้งที่ 3</h3>
+
+          <div class="trial-summary">
+            <div class="trial-param">
+              <span class="param-label">เชื้อเพลิง:</span>
+              <span class="param-value">เปลือกข้าว</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">น้ำหนัก:</span>
+              <span class="param-value">1.0 g</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">ความยาวฟิวส์:</span>
+              <span class="param-value">5.0 cm</span>
+            </div>
+            <div class="trial-param">
+              <span class="param-label">อุณหภูมิห้อง:</span>
+              <span class="param-value">25°C</span>
+            </div>
+          </div>
+
+          <div class="calculation-results">
+            <h4>ผลการคำนวณ</h4>
+            <div class="result-grid">
+              <div class="result-item">
+                <span class="result-label">Δt</span>
+                <span class="result-value">1.0°C</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">H<sub>g</sub></span>
+                <span class="result-value">2,414.50 Btu/lb</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ความชื้น</span>
+                <span class="result-value">11%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ปริมาณเถ้า</span>
+                <span class="result-value">11%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">ความหนาแน่น</span>
+                <span class="param-value">0.15 g/cm³</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Temperature Data Table (Recreated) -->
+          <div class="data-table-section">
+            <h4><i class="fa-solid fa-table"></i> ตารางบันทึกอุณหภูมิแบบละเอียด</h4>
+            <div class="detailed-table-container">
+              <table class="recreated-data-table">
+                <thead>
+                  <tr>
+                    <th>วินาทีที่</th>
+                    <th>เวลา (นาที:วินาที)</th>
+                    <th>อุณหภูมิ (°C)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>00:00</td>
+                    <td class="marker-cell">26.5 <span class="marker-label">จุด a₀</span></td>
+                  </tr>
+                  <tr>
+                    <td>60</td>
+                    <td>01:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>120</td>
+                    <td>02:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>180</td>
+                    <td>03:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>240</td>
+                    <td>04:00</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>300</td>
+                    <td>05:00</td>
+                    <td class="marker-cell">26.5 <span class="marker-label">จุด a</span></td>
+                  </tr>
+                  <tr>
+                    <td>315</td>
+                    <td>05:15</td>
+                    <td>26.5</td>
+                  </tr>
+                  <tr>
+                    <td>330</td>
+                    <td>05:30</td>
+                    <td>26.6</td>
+                  </tr>
+                  <tr>
+                    <td>390</td>
+                    <td>06:30</td>
+                    <td class="marker-cell">27.0 <span class="marker-label">จุด b</span></td>
+                  </tr>
+                  <tr>
+                    <td>420</td>
+                    <td>07:00</td>
+                    <td>27.3</td>
+                  </tr>
+                  <tr>
+                    <td>480</td>
+                    <td>08:00</td>
+                    <td class="marker-cell">27.5 <span class="marker-label">จุด c</span></td>
+                  </tr>
+                  <tr>
+                    <td>540</td>
+                    <td>09:00</td>
+                    <td class="marker-cell">27.5 <span class="marker-label">จุด d</span></td>
+                  </tr>
+                  <tr>
+                    <td>765</td>
+                    <td>12:45</td>
+                    <td>27.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-table"></i> สรุปผลการทดลองทั้ง 3 ครั้ง</h3>
+          <div class="table-wrapper">
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th>พารามิเตอร์</th>
+                  <th>ครั้งที่ 1</th>
+                  <th>ครั้งที่ 2</th>
+                  <th>ครั้งที่ 3</th>
+                  <th>ค่าเฉลี่ย</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>ค่าความร้อนสูงสุด (Btu/lb)</strong></td>
+                  <td>2,652.16</td>
+                  <td class="best-value">9,011.61</td>
+                  <td>2,414.50</td>
+                  <td><strong>4,692.75</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>ค่าความร้อนสูงสุด (kJ/kg)</strong></td>
+                  <td>6,168.5</td>
+                  <td class="best-value">20,958.0</td>
+                  <td>5,615.5</td>
+                  <td><strong>10,914</strong></td>
+                </tr>
+                <tr>
+                  <td>ปริมาณเถ้า (%)</td>
+                  <td>15</td>
+                  <td class="best-value">4</td>
+                  <td>11</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>ความหนาแน่น (g/cm³)</td>
+                  <td>0.15</td>
+                  <td>0.15</td>
+                  <td>0.15</td>
+                  <td>0.15</td>
+                </tr>
+                <tr>
+                  <td>Δt (°C)</td>
+                  <td>1.1</td>
+                  <td class="best-value">3.72</td>
+                  <td>1.0</td>
+                  <td>1.94</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Visual Data Comparison Section (Recreated) -->
+        <div class="lab-section-block glass-card">
+          <h3><i class="fa-solid fa-chart-line"></i> ข้อมูลเปรียบเทียบแบบกราฟิก</h3>
+
+          <!-- Chemical Properties Chart -->
+          <div class="interactive-chart">
+            <h4 class="chart-title">คุณสมบัติทางเคมี: ความชื้นและเถ้า (%)</h4>
+            <div class="chart-bars-container">
+              <!-- Moisture (%) -->
+              <div class="chart-row">
+                <span class="chart-label">ความชื้น (ครั้งที่ 1)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-moisture" style="width: 14.94%">14.94%</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">ความชื้น (ครั้งที่ 2)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-moisture" style="width: 3.72%">3.72%</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">ความชื้น (ครั้งที่ 3)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-moisture" style="width: 16.94%">16.94%</div>
+                </div>
+              </div>
+              <!-- Ash (%) -->
+              <div class="chart-row">
+                <span class="chart-label">ปริมาณเถ้า (ครั้งที่ 1)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-ash" style="width: 15%">15%</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">ปริมาณเถ้า (ครั้งที่ 2)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-ash" style="width: 4%">4%</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">ปริมาณเถ้า (ครั้งที่ 3)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-ash" style="width: 11%">11%</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="color-box bar-moisture"></div> ความชื้น (%)
+              </div>
+              <div class="legend-item">
+                <div class="color-box bar-ash"></div> ปริมาณเถ้า (%)
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Comparison Chart -->
+          <div class="interactive-chart">
+            <h4 class="chart-title">ค่าความร้อนสูงสุด (Hg) และ Δt</h4>
+            <div class="chart-bars-container">
+              <!-- Hg values normalized to 100% based on max 21258 -->
+              <div class="chart-row">
+                <span class="chart-label">Hg (ครั้งที่ 1)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-hg" style="width: 29%">6,168 kJ/kg</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">Hg (ครั้งที่ 2)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-hg" style="width: 100%">21,258 kJ/kg</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">Hg (ครั้งที่ 3)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-hg" style="width: 26%">5,616 kJ/kg</div>
+                </div>
+              </div>
+              <!-- Delta t values normalized to 100% based on max 8.9 -->
+              <div class="chart-row">
+                <span class="chart-label">Δt (ครั้งที่ 1)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-dt" style="width: 12%">1.1°C</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">Δt (ครั้งที่ 2)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-dt" style="width: 100%">8.9°C</div>
+                </div>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">Δt (ครั้งที่ 3)</span>
+                <div class="bar-outer">
+                  <div class="bar-inner bar-dt" style="width: 13%">1.15°C</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="color-box bar-hg"></div> ค่าความร้อน (kJ/kg)
+              </div>
+              <div class="legend-item">
+                <div class="color-box bar-dt"></div> ผลต่างอุณหภูมิ (°C)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="lab-section-block glass-card analysis-section">
+          <h3><i class="fa-solid fa-microscope"></i> การวิเคราะห์ผล</h3>
+          <div class="analysis-content">
+            <p class="academic-text">
+              จากผลการทดลองทั้ง 3 ครั้ง พบว่าค่าความร้อนสูงสุดมีความแตกต่างกันอย่างมีนัยสำคัญ โดย<strong>ครั้งที่
+                2</strong> ให้ค่าความร้อนสูงสุดที่ <strong>9,011.61 Btu/lb (20,958.0 kJ/kg)</strong>
+              ซึ่งสูงกว่าครั้งอื่นๆ มาก เมื่อเปรียบเทียบกับค่าเฉลี่ยที่ 4,692.75 Btu/lb
+            </p>
+
+            <div class="key-finding-box">
+              <i class="fa-solid fa-lightbulb"></i>
+              <div>
+                <h4>ปัจจัยสำคัญที่สุด: ปริมาณความชื้น</h4>
+                <p>ความแตกต่างนี้สัมพันธ์กับ<strong>ปริมาณความชื้น</strong>อย่างชัดเจน โดยครั้งที่ 2 มีความชื้นเพียง
+                  <strong>4%</strong> (ต่ำที่สุด) ในขณะที่ครั้งที่ 1 มีความชื้นถึง <strong>15%</strong>
+                  ความชื้นสูงจะดูดซับพลังงานความร้อนไปใช้ในการระเหยน้ำ ทำให้ค่าความร้อนที่ได้จริงลดลง
+                </p>
+              </div>
+            </div>
+
+            <div class="finding-points">
+              <div class="finding-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <p><strong>ความหนาแน่นคงที่:</strong> ทุกครั้งมีค่า 0.15 g/cm³ แสดงว่าวัสดุมีความสม่ำเสมอ</p>
+              </div>
+              <div class="finding-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <p><strong>ค่า Δt:</strong> ครั้งที่ 2 สูงถึง 3.72°C สอดคล้องกับค่าความร้อนสูงสุด</p>
+              </div>
+              <div class="finding-point">
+                <i class="fa-solid fa-check-circle"></i>
+                <p><strong>ปริมาณเถ้า:</strong> มีความสัมพันธ์แบบผกผันกับค่าความร้อน (เถ้าต่ำ = ความร้อนสูง)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="lab-section-block glass-card conclusion-section">
+          <h3><i class="fa-solid fa-flag-checkered"></i> สรุปการทดลอง</h3>
+          <p class="academic-text conclusion-text">
+            แกลบเป็นเชื้อเพลิงชีวมวลที่มีศักยภาพสูงมากสำหรับประเทศไทย ด้วยค่าความร้อนเฉลี่ยที่ <strong>3,300 - 3,600
+              kcal/kg</strong> ซึ่งเพียงพอสำหรับการใช้ในโรงไฟฟ้าชีวมวล (Biomass Power Plant) และหม้อไอน้ำอุตสาหกรรม
+            (Boiler) การควบคุมคุณภาพเชื้อเพลิง
+            โดยเฉพาะ<strong>การลดความชื้น</strong>เป็นปัจจัยสำคัญต่อประสิทธิภาพการเผาไหม้
+            แกลบจะช่วยลดต้นทุนพลังงานและลดการพึ่งพาเชื้อเพลิงฟอสซิลได้อย่างยั่งยืน
+          </p>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="lab-section-block glass-card recommendations-section">
+          <h3><i class="fa-solid fa-clipboard-list"></i> ข้อเสนอแนะในการทดลองครั้งต่อไป</h3>
+          <div class="recommendations-grid">
+            <div class="recommendation-card">
+              <div class="rec-number">1</div>
+              <h4>เพิ่มจำนวนการทดลอง</h4>
+              <p>ทำการทดลองอย่างน้อย 5 ครั้งและใช้การวิเคราะห์ทางสถิติเพื่อคัดค่าผิดปกติออก</p>
+            </div>
+            <div class="recommendation-card">
+              <div class="rec-number">2</div>
+              <h4>ปรับปรุงวิธีการวัดความชื้น</h4>
+              <p>ใช้เตาอบที่ควบคุมอุณหภูมิได้แม่นยำ (105±2°C) อบ 24 ชั่วโมง</p>
+            </div>
+            <div class="recommendation-card">
+              <div class="rec-number">3</div>
+              <h4>ใช้ฟิวส์ความยาวเท่ากัน</h4>
+              <p>เพื่อลดตัวแปรที่ไม่จำเป็นและทำให้เปรียบเทียบผลได้ง่ายขึ้น</p>
+            </div>
+            <div class="recommendation-card">
+              <div class="rec-number">4</div>
+              <h4>สอบเทียบอุปกรณ์</h4>
+              <p>ตรวจสอบค่าคงที่ของแคลอรีมิเตอร์ (W) โดยใช้สารมาตรฐาน เช่น benzoic acid</p>
+            </div>
+            <div class="recommendation-card">
+              <div class="rec-number">5</div>
+              <h4>ควบคุมสภาพแวดล้อม</h4>
+              <p>ทำการทดลองในห้องที่มีอุณหภูมิคงที่และหลีกเลี่ยงการเปิดหน้าต่าง</p>
+            </div>
+            <div class="recommendation-card">
+              <div class="rec-number">6</div>
+              <p>บันทึกน้ำหนักตัวอย่าง สภาพอากาศ ความชื้นสัมพัทธ์ และข้อสังเกตอื่นๆ</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Action -->
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="images/รายงานปฏิบัติการทดลอง เรื่อง การหาค่าความร้อนของเปลือกข้าว.pdf" target="_blank"
+            class="lab-download-btn">
+            <i class="fa-solid fa-file-pdf"></i> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
