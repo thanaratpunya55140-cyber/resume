@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Sarabun:wght@300;400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Sarabun:wght@300;400;600;700;800&family=Outfit:wght@500;700;900&family=Inter:wght@400;700;900&display=swap"
     rel="stylesheet">
 
   <!-- Icons -->
@@ -1139,12 +1139,10 @@
 
           <!-- Card 3: Key Finding -->
           <div class="info-card key-finding-box">
-            <div class="finding-icon">
-              <i class="fa-solid fa-lightbulb"></i>
-            </div>
+            <i class="fa-solid fa-lightbulb"></i>
             <div class="finding-content">
               <h4>ผลการวิเคราะห์สำคัญ</h4>
-              <p class="academic-text" style="font-size: 0.95rem;">
+              <p class="academic-text">
                 จากการทดลองพบว่า <strong>"ความชื้น"</strong> เป็นปัจจัยวิกฤตที่ส่งผลต่อค่าความร้อน
                 โดยเปลือกข้าวที่มีความชื้นต่ำ (4%) ให้ค่าความร้อนสูงถึง <strong>9,011 Btu/lb</strong>
                 ในขณะที่ความชื้นสูง (15%) ค่าความร้อนลดลงเหลือเพียง 2,652 Btu/lb
@@ -1832,25 +1830,64 @@
         </div>
       </div>
 
-      <!-- Experiment Photo Gallery -->
-      <div class="lab-section-block glass-card">
+      <!-- Experiment Infographic Gallery -->
+      <div class="lab-section-block glass-card experimental-gallery-section" style="margin-top: 3rem;">
         <h3><i class="fa-solid fa-images"></i> ภาพประกอบการทดลอง</h3>
-        <div class="rec-photo-grid">
-          <div class="rec-photo-item">
-            <img src="images/S__28794887.jpg" alt="ภาพการทดลองที่ 1" loading="lazy">
+        <p class="academic-text" style="text-align: center; margin-bottom: 2rem;">
+          ลำดับขั้นตอนสำคัญในการเตรียมตัวอย่างและดำเนินการทดลองหาค่าความร้อน
+        </p>
+
+        <div class="experiment-step-grid">
+          <!-- Step 1 -->
+          <div class="experiment-step-card">
+            <div class="step-badge">Phase 01</div>
+            <div class="step-visual">
+              <img src="images/S__28794887.jpg" alt="การเตรียมเปลือกข้าว" loading="lazy">
+            </div>
+            <div class="step-content">
+              <h4>การเตรียมวัตถุดิบ</h4>
+              <p>คัดเลือกแกลบหรือเปลือกข้าวที่สะอาดและมีความสมบูรณ์เชิงโครงสร้างสำหรับการทดลอง</p>
+            </div>
           </div>
-          <div class="rec-photo-item">
-            <img src="images/S__28794886.jpg" alt="ภาพการทดลองที่ 2" loading="lazy">
+
+          <!-- Step 2 -->
+          <div class="experiment-step-card">
+            <div class="step-badge">Phase 02</div>
+            <div class="step-visual">
+              <img src="images/S__28794886.jpg" alt="การลดขนาดและเตรียมตัวอย่าง" loading="lazy">
+            </div>
+            <div class="step-content">
+              <h4>การชั่งน้ำหนักและบรรจุ</h4>
+              <p>ชั่งน้ำหนักตัวอย่างให้ได้ตามมาตรฐาน (ประมาณ 1.0 กรัม) ก่อนนำเข้าสู่เครื่องแคลอรีมิเตอร์</p>
+            </div>
           </div>
-          <div class="rec-photo-item">
-            <img src="images/S__28794884.jpg" alt="ภาพการทดลองที่ 3" loading="lazy">
+
+          <!-- Step 3 -->
+          <div class="experiment-step-card">
+            <div class="step-badge">Phase 03</div>
+            <div class="step-visual">
+              <img src="images/S__28794884.jpg" alt="การติดตั้งชุดทดลอง" loading="lazy">
+            </div>
+            <div class="step-content">
+              <h4>การติดตั้งชุดทดลอง</h4>
+              <p>ติดตั้งฟิวส์และบรรจุตัวอย่างลงในลูกระเบิด (Bomb) พร้อมอัดก๊าซออกซิเจนให้ได้แรงดันที่กำหนด</p>
+            </div>
           </div>
-          <div class="rec-photo-item">
-            <img src="images/S__28794883.jpg" alt="ภาพการทดลองที่ 4" loading="lazy">
+
+          <!-- Step 4 -->
+          <div class="experiment-step-card">
+            <div class="step-badge">Phase 04</div>
+            <div class="step-visual">
+              <img src="images/S__28794883.jpg" alt="การวิเคราะห์และบันทึกผล" loading="lazy">
+            </div>
+            <div class="step-content">
+              <h4>การวิเคราะห์และบันทึกผล</h4>
+              <p>ติดตามการเปลี่ยนแปลงของอุณหภูมิน้ำทุก 15 วินาทีเพื่อหาค่า Δt สำหรับการคำนวณพลังงานความร้อน</p>
+            </div>
           </div>
         </div>
 
-        <!-- Experiment Video Section (NEW) -->
+        <!-- Experiment Video Section -->
         <div class="rec-video-section">
           <h4><i class="fa-solid fa-video"></i> วิดีโอการทดลอง (Experiment Video)</h4>
           <div class="rec-video-wrapper drive-link-container">
@@ -1873,8 +1910,6 @@
           <i class="fa-solid fa-file-pdf"></i> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
         </a>
       </div>
-
-    </div>
     </div>
   </section>
 
