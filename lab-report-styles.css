@@ -300,12 +300,14 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Tables */
+/* Tables - Academic & Clean Style */
 .table-wrapper {
     overflow-x: auto;
     margin-top: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 31, 63, 0.1);
 }
 
 .comparison-table,
@@ -313,51 +315,62 @@
     width: 100%;
     border-collapse: collapse;
     background: white;
+    font-family: 'Inter', sans-serif;
 }
 
 .comparison-table thead,
 .summary-table thead {
-    background: linear-gradient(135deg, #001f3f, #003366);
-    /* Professional Navy */
-    color: white;
+    background: transparent;
+    color: var(--premium-navy);
 }
 
 .comparison-table th,
 .summary-table th {
-    padding: 1.8rem;
+    padding: 1.2rem 1.5rem;
     text-align: left;
-    font-weight: 800;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    border-bottom: 4px solid var(--premium-gold);
-    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    border-top: 2px solid var(--premium-navy);
+    border-bottom: 2px solid var(--premium-navy);
+    color: var(--premium-navy);
 }
 
 .comparison-table td,
 .summary-table td {
-    padding: 1.2rem 1.8rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     color: var(--text-main);
-    font-size: 1.05rem;
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 .comparison-table tbody tr:hover,
 .summary-table tbody tr:hover {
-    background: rgba(212, 175, 55, 0.03);
+    background: rgba(0, 31, 63, 0.02);
 }
 
 .highlight-row {
-    background: rgba(212, 175, 55, 0.05) !important;
-    font-weight: 800;
+    background: transparent !important;
+    font-weight: 700;
     color: var(--premium-navy) !important;
 }
 
 .best-value {
-    background: rgba(39, 174, 96, 0.08) !important;
-    font-weight: 900;
-    color: var(--accent-green) !important;
-    border: 1px solid rgba(39, 174, 96, 0.2) !important;
+    background: transparent !important;
+    font-weight: 800;
+    color: var(--premium-navy) !important;
+    position: relative;
+    border: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.best-value::after {
+    content: '★';
+    color: var(--premium-gold);
+    margin-left: 8px;
+    font-size: 1.1rem;
 }
 
 /* Experimental Data */
@@ -586,42 +599,75 @@
     margin-top: 2rem;
 }
 
-.recommendation-card {
-    background: white;
+/* Visual Data Comparison - Academic Style */
+.interactive-chart {
+    background: #ffffff;
     padding: 2rem;
-    border-radius: 15px;
-    border: 2px solid #ecf0f1;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 31, 63, 0.1);
+}
+
+.chart-title {
+    color: var(--premium-navy);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(0, 31, 63, 0.1);
+    padding-bottom: 0.8rem;
+}
+
+.chart-bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.chart-label {
+    flex: 0 0 160px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 600;
+    text-align: right;
+}
+
+.bar-outer {
+    flex-grow: 1;
+    background: #f1f2f6;
+    height: 18px;
+    border-radius: 0;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.recommendation-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.recommendation-card:hover::before {
-    transform: scaleX(1);
-}
-
-.recommendation-card:hover {
-    border-color: #3498db;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+.bar-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border-radius: 0;
+    transition: width 1.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .rec-number {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    width: 60px;
+    height: 60px;
+    background: #3498db;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -697,36 +743,48 @@
     transform: scale(1.05);
 }
 
-/* Experimental Infographic Gallery Styles */
-.experimental-gallery-section {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.8));
-    border-left: 6px solid var(--gold);
-    margin-top: 3rem;
+/* Interactive Chart Colors - Academic Style */
+.bar-moisture {
+    background: #001f3f;
+    /* Deep Navy */
 }
 
-.experiment-step-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
+.bar-ash {
+    background: #7f8c8d;
+    /* Slate Grey */
 }
 
-.experiment-step-card {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+.bar-hg {
+    background: #001f3f;
+}
+
+.bar-dt {
+    background: #d4af37;
+    /* Subdued Gold */
+}
+
+.chart-legend {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
-.experiment-step-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
-    border-color: var(--gold);
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.color-box {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
 }
 
 .step-badge {
