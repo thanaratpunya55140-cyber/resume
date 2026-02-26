@@ -600,6 +600,13 @@
 }
 
 /* Visual Data Comparison - Academic Style */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
 .interactive-chart {
     background: #ffffff;
     padding: 2rem;
