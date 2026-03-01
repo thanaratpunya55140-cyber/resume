@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางบันทึกผลการทดลอง - แกลบ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1A237E;
+            --orange: #FF6D00;
+            --gold: #D4AF37;
+            --green: #2ecc71;
+            --dark: #0d1117;
+            --glass: rgba(255, 255, 255, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #1a237e22 50%, #0d1117 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 3rem 1.5rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title .subtitle {
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ===== TRIAL CARD ===== */
+        .trial-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .trial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .trial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .trial-card.trial-1::before {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .trial-card.trial-2::before {
+            background: linear-gradient(90deg, var(--orange), #f39c12);
+        }
+
+        .trial-card.trial-3::before {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+
+        .trial-card.chem-table::before {
+            background: linear-gradient(90deg, var(--green), #27ae60);
+        }
+
+        .trial-card.trial-2 {
+            border-color: rgba(255, 109, 0, 0.3);
+        }
+
+        /* BADGE */
+        .trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        .badge-1 {
+            background: rgba(52, 152, 219, 0.15);
+            border: 1px solid #3498db;
+            color: #3498db;
+        }
+
+        .badge-2 {
+            background: rgba(255, 109, 0, 0.15);
+            border: 1px solid var(--orange);
+            color: var(--orange);
+        }
+
+        .badge-3 {
+            background: rgba(155, 89, 182, 0.15);
+            border: 1px solid #9b59b6;
+            color: #9b59b6;
+        }
+
+        .badge-chem {
+            background: rgba(46, 204, 113, 0.15);
+            border: 1px solid var(--green);
+            color: var(--green);
+        }
+
+        .trial-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .trial-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        /* TABLE */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.97rem;
+        }
+
+        thead tr {
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.4));
+        }
+
+        th {
+            padding: 1rem 1.4rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 2px solid var(--gold);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.9rem 1.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* row types */
+        .row-section td {
+            background: rgba(26, 35, 126, 0.25);
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+        }
+
+        .row-result td {
+            background: rgba(255, 109, 0, 0.08);
+            font-weight: 700;
+            color: white;
+        }
+
+        .row-result.best td {
+            background: rgba(255, 109, 0, 0.15);
+        }
+
+        /* Value pill */
+        .val-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 0.2rem 0.7rem;
+            font-family: 'Inter', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .val-pill.highlight {
+            background: rgba(255, 109, 0, 0.2);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .val-pill.blue {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: #3498db;
+            color: #74b9ff;
+        }
+
+        .val-pill.green {
+            background: rgba(46, 204, 113, 0.2);
+            border-color: var(--green);
+            color: #55efc4;
+        }
+
+        .val-pill.gold {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* RESULT ROW at bottom */
+        .result-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .res-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .res-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .res-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+
+        .res-unit {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 0.3rem;
+        }
+
+        .res-item.featured {
+            border-color: var(--orange);
+            background: rgba(255, 109, 0, 0.1);
+        }
+
+        .res-item.featured .res-value {
+            color: var(--orange);
+        }
+
+        /* Chemical table */
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .tag-carbon {
+            background: rgba(52, 152, 219, 0.2);
+            color: #74b9ff;
+        }
+
+        .tag-hydrogen {
+            background: rgba(46, 204, 113, 0.2);
+            color: #55efc4;
+        }
+
+        .tag-oxygen {
+            background: rgba(231, 76, 60, 0.2);
+            color: #ff7675;
+        }
+
+        .tag-nitrogen {
+            background: rgba(155, 89, 182, 0.2);
+            color: #a29bfe;
+        }
+
+        .tag-sulfur {
+            background: rgba(243, 156, 18, 0.2);
+            color: #fdcb6e;
+        }
+
+        .tag-ash {
+            background: rgba(149, 165, 166, 0.2);
+            color: #b2bec3;
+        }
+
+        .tag-moisture {
+            background: rgba(9, 132, 227, 0.2);
+            color: #74b9ff;
+        }
+
+        .section-divider {
+            text-align: center;
+            padding: 0.5rem 0 2rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-title">
+            <div class="subtitle">Laboratory Data Record</div>
+            <h1>ตารางบันทึกผลการทดลอง</h1>
+            <p style="color:rgba(255,255,255,0.4); margin-top:0.5rem; font-size:0.95rem;">การหาค่าความร้อนจากเปลือกข้าว
+                · Rice Husk Calorific Value Experiment</p>
+        </div>
+
+        <!-- ===== TRIAL 1 ===== -->
+        <div class="trial-card trial-1">
+            <div class="trial-badge badge-1"><i class="fa-solid fa-flask"></i> Trial 1</div>
+            <div class="trial-title">ตารางบันทึกผลการทดลองที่ 1</div>
+            <div class="trial-subtitle">ความชื้นสูง · High Moisture Content — 14.94%</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รายการ (Parameter)</th>
+                            <th>สัญลักษณ์</th>
+                            <th>ค่าที่บันทึก</th>
+                            <th>หน่วย</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลเชื้อเพลิงและตัวอย่าง (Fuel & Sample Data)</td>
+                        </tr>
+                        <tr>
+                            <td>น้ำหนักตัวอย่างแกลบ</td>
+                            <td><em>m<sub>fuel</sub></em></td>
+                            <td><span class="val-pill blue">1.0</span></td>
+                            <td>g</td>
+                            <td>ชั่งด้วยดิจิทัลสเกล</td>
+                        </tr>
+                        <tr>
+                            <td>ปริมาณความชื้น</td>
+                            <td><em>MC</em></td>
+                            <td><span class="val-pill blue">14.94</span></td>
+                            <td>%</td>
+                            <td>Wet Basis</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลระบบแคลอรีมิเตอร์ (Calorimeter Setup)</td>
+                        </tr>
+                        <tr>
+                            <td>ความจุความร้อนของน้ำ</td>
+                            <td><em>m<sub>w</sub></em></td>
+                            <td><span class="val-pill">2000</span></td>
+                            <td>g</td>
+                            <td>น้ำกลั่นในบีกเกอร์</td>
+                        </tr>
+                        <tr>
+                            <td>ความยาวลวดความร้อน (ก่อนจุด)</td>
+                            <td><em>L<sub>1</sub></em></td>
+                            <td><span class="val-pill blue">6.5</span></td>
+                            <td>cm</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>ความยาวลวดความร้อน (หลังจุด)</td>
+                            <td><em>L<sub>2</sub></em></td>
+                            <td><span class="val-pill">—</span></td>
+                            <td>cm</td>
+                            <td>บันทึกหลังการทดลอง</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลอุณหภูมิ (Temperature Data)</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิเริ่มต้น (ก่อนจุด)</td>
+                            <td><em>T<sub>i</sub></em></td>
+                            <td><span class="val-pill blue">25.0</span></td>
+                            <td>°C</td>
+                            <td>อุณหภูมิห้อง</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิสูงสุด (หลังจุด)</td>
+                            <td><em>T<sub>f</sub></em></td>
+                            <td><span class="val-pill blue">26.1</span></td>
+                            <td>°C</td>
+                            <td>—</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ผลต่างอุณหภูมิ (Temperature Change)</strong></td>
+                            <td><strong>Δ<em>T</em></strong></td>
+                            <td><span class="val-pill highlight">1.1</span></td>
+                            <td>°C</td>
+                            <td>Δ<em>T</em> = T<sub>f</sub> − T<sub>i</sub></td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ผลการคำนวณ (Calculated Results)</td>
+                        </tr>
+                        <tr>
+                            <td>ความร้อนที่ดูดซับโดยน้ำ</td>
+                            <td><em>Q<sub>water</sub></em></td>
+                            <td><span class="val-pill">9,196</span></td>
+                            <td>cal</td>
+                            <td>Q = m·c·ΔT</td>
+                        </tr>
+                        <tr>
+                            <td>ความร้อนจากการเผาไหม้ลวด</td>
+                            <td><em>Q<sub>wire</sub></em></td>
+                            <td><span class="val-pill">—</span></td>
+                            <td>cal</td>
+                            <td>ตามค่ามาตรฐานลวด</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ค่าความร้อนสูง (HHV)</strong></td>
+                            <td><strong>H<sub>g</sub></strong></td>
+                            <td><span class="val-pill highlight">2,652.16</span></td>
+                            <td>Btu/lb</td>
+                            <td>≈ 6,170 kJ/kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-summary">
+                <div class="res-item">
+                    <div class="res-label">ความชื้น</div>
+                    <div class="res-value">14.94</div>
+                    <div class="res-unit">%</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">ΔT วัดได้</div>
+                    <div class="res-value">1.1</div>
+                    <div class="res-unit">°C</div>
+                </div>
+                <div class="res-item featured">
+                    <div class="res-label">HHV (ค่าความร้อนสูง)</div>
+                    <div class="res-value">2,652</div>
+                    <div class="res-unit">Btu/lb</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">เทียบเท่า SI</div>
+                    <div class="res-value">6,170</div>
+                    <div class="res-unit">kJ/kg</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TRIAL 2 ===== -->
+        <div class="trial-card trial-2">
+            <div class="trial-badge badge-2"><i class="fa-solid fa-trophy"></i> Trial 2 · Best Result</div>
+            <div class="trial-title">ตารางบันทึกผลการทดลองที่ 2</div>
+            <div class="trial-subtitle">ความชื้นต่ำสุด · Lowest Moisture — 4% → ประสิทธิภาพสูงสุด</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รายการ (Parameter)</th>
+                            <th>สัญลักษณ์</th>
+                            <th>ค่าที่บันทึก</th>
+                            <th>หน่วย</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลเชื้อเพลิงและตัวอย่าง</td>
+                        </tr>
+                        <tr>
+                            <td>น้ำหนักตัวอย่างแกลบ</td>
+                            <td><em>m<sub>fuel</sub></em></td>
+                            <td><span class="val-pill blue">1.0</span></td>
+                            <td>g</td>
+                            <td>ชั่งด้วยดิจิทัลสเกล</td>
+                        </tr>
+                        <tr>
+                            <td>ปริมาณความชื้น</td>
+                            <td><em>MC</em></td>
+                            <td><span class="val-pill green">4.0</span></td>
+                            <td>%</td>
+                            <td>อบแห้งก่อนทดลอง</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลระบบแคลอรีมิเตอร์</td>
+                        </tr>
+                        <tr>
+                            <td>ความจุความร้อนของน้ำ</td>
+                            <td><em>m<sub>w</sub></em></td>
+                            <td><span class="val-pill">2000</span></td>
+                            <td>g</td>
+                            <td>น้ำกลั่นในบีกเกอร์</td>
+                        </tr>
+                        <tr>
+                            <td>ความยาวลวดความร้อน (ก่อนจุด)</td>
+                            <td><em>L<sub>1</sub></em></td>
+                            <td><span class="val-pill blue">5.7</span></td>
+                            <td>cm</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลอุณหภูมิ</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิเริ่มต้น</td>
+                            <td><em>T<sub>i</sub></em></td>
+                            <td><span class="val-pill blue">25.0</span></td>
+                            <td>°C</td>
+                            <td>อุณหภูมิห้อง</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิสูงสุด</td>
+                            <td><em>T<sub>f</sub></em></td>
+                            <td><span class="val-pill blue">28.72</span></td>
+                            <td>°C</td>
+                            <td>—</td>
+                        </tr>
+                        <tr class="row-result best">
+                            <td><strong>ผลต่างอุณหภูมิ</strong></td>
+                            <td><strong>Δ<em>T</em></strong></td>
+                            <td><span class="val-pill highlight">3.72</span></td>
+                            <td>°C</td>
+                            <td>ค่าสูงสุดทั้ง 3 ครั้ง</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ผลการคำนวณ</td>
+                        </tr>
+                        <tr>
+                            <td>ความร้อนที่ดูดซับโดยน้ำ</td>
+                            <td><em>Q<sub>water</sub></em></td>
+                            <td><span class="val-pill">31,113</span></td>
+                            <td>cal</td>
+                            <td>Q = m·c·ΔT</td>
+                        </tr>
+                        <tr class="row-result best">
+                            <td><strong>ค่าความร้อนสูง (HHV) 🏆</strong></td>
+                            <td><strong>H<sub>g</sub></strong></td>
+                            <td><span class="val-pill highlight">9,011.61</span></td>
+                            <td>Btu/lb</td>
+                            <td>≈ 20,956 kJ/kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-summary">
+                <div class="res-item">
+                    <div class="res-label">ความชื้น</div>
+                    <div class="res-value">4.0</div>
+                    <div class="res-unit">% (ต่ำสุด)</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">ΔT วัดได้</div>
+                    <div class="res-value">3.72</div>
+                    <div class="res-unit">°C (สูงสุด)</div>
+                </div>
+                <div class="res-item featured">
+                    <div class="res-label">HHV — ค่าสูงสุด 🏆</div>
+                    <div class="res-value">9,012</div>
+                    <div class="res-unit">Btu/lb</div>
+                </div>
+                <div class="res-item featured">
+                    <div class="res-label">เทียบเท่า SI</div>
+                    <div class="res-value">20,956</div>
+                    <div class="res-unit">kJ/kg</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TRIAL 3 ===== -->
+        <div class="trial-card trial-3">
+            <div class="trial-badge badge-3"><i class="fa-solid fa-flask"></i> Trial 3</div>
+            <div class="trial-title">ตารางบันทึกผลการทดลองที่ 3</div>
+            <div class="trial-subtitle">ความชื้นปานกลาง · Medium Moisture Content — 11%</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รายการ (Parameter)</th>
+                            <th>สัญลักษณ์</th>
+                            <th>ค่าที่บันทึก</th>
+                            <th>หน่วย</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลเชื้อเพลิงและตัวอย่าง</td>
+                        </tr>
+                        <tr>
+                            <td>น้ำหนักตัวอย่างแกลบ</td>
+                            <td><em>m<sub>fuel</sub></em></td>
+                            <td><span class="val-pill blue">1.0</span></td>
+                            <td>g</td>
+                            <td>ชั่งด้วยดิจิทัลสเกล</td>
+                        </tr>
+                        <tr>
+                            <td>ปริมาณความชื้น</td>
+                            <td><em>MC</em></td>
+                            <td><span class="val-pill blue">11.0</span></td>
+                            <td>%</td>
+                            <td>Wet Basis</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลระบบแคลอรีมิเตอร์</td>
+                        </tr>
+                        <tr>
+                            <td>ความจุความร้อนของน้ำ</td>
+                            <td><em>m<sub>w</sub></em></td>
+                            <td><span class="val-pill">2000</span></td>
+                            <td>g</td>
+                            <td>น้ำกลั่นในบีกเกอร์</td>
+                        </tr>
+                        <tr>
+                            <td>ความยาวลวดความร้อน (ก่อนจุด)</td>
+                            <td><em>L<sub>1</sub></em></td>
+                            <td><span class="val-pill blue">5.0</span></td>
+                            <td>cm</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ข้อมูลอุณหภูมิ</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิเริ่มต้น</td>
+                            <td><em>T<sub>i</sub></em></td>
+                            <td><span class="val-pill blue">25.0</span></td>
+                            <td>°C</td>
+                            <td>อุณหภูมิห้อง</td>
+                        </tr>
+                        <tr>
+                            <td>อุณหภูมิสูงสุด</td>
+                            <td><em>T<sub>f</sub></em></td>
+                            <td><span class="val-pill blue">26.0</span></td>
+                            <td>°C</td>
+                            <td>—</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ผลต่างอุณหภูมิ</strong></td>
+                            <td><strong>Δ<em>T</em></strong></td>
+                            <td><span class="val-pill highlight">1.0</span></td>
+                            <td>°C</td>
+                            <td>Δ<em>T</em> = T<sub>f</sub> − T<sub>i</sub></td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="5">ผลการคำนวณ</td>
+                        </tr>
+                        <tr>
+                            <td>ความร้อนที่ดูดซับโดยน้ำ</td>
+                            <td><em>Q<sub>water</sub></em></td>
+                            <td><span class="val-pill">8,360</span></td>
+                            <td>cal</td>
+                            <td>Q = m·c·ΔT</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ค่าความร้อนสูง (HHV)</strong></td>
+                            <td><strong>H<sub>g</sub></strong></td>
+                            <td><span class="val-pill highlight">2,414.50</span></td>
+                            <td>Btu/lb</td>
+                            <td>≈ 5,617 kJ/kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-summary">
+                <div class="res-item">
+                    <div class="res-label">ความชื้น</div>
+                    <div class="res-value">11.0</div>
+                    <div class="res-unit">%</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">ΔT วัดได้</div>
+                    <div class="res-value">1.0</div>
+                    <div class="res-unit">°C</div>
+                </div>
+                <div class="res-item featured">
+                    <div class="res-label">HHV ค่าความร้อนสูง</div>
+                    <div class="res-value">2,415</div>
+                    <div class="res-unit">Btu/lb</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">เทียบเท่า SI</div>
+                    <div class="res-value">5,617</div>
+                    <div class="res-unit">kJ/kg</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">── ✦ ──</div>
+
+        <!-- ===== CHEMICAL PROPERTIES TABLE ===== -->
+        <div class="trial-card chem-table">
+            <div class="trial-badge badge-chem"><i class="fa-solid fa-atom"></i> Chemical Analysis</div>
+            <div class="trial-title">ตารางบันทึกคุณสมบัติทางเคมี</div>
+            <div class="trial-subtitle">Proximate & Ultimate Analysis · เปลือกข้าว (Rice Husk)</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>คุณสมบัติ</th>
+                            <th>พารามิเตอร์</th>
+                            <th>ค่า As-received</th>
+                            <th>ค่า Dry Basis</th>
+                            <th>หน่วย</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-section">
+                            <td colspan="6">Proximate Analysis (การวิเคราะห์โดยประมาณ)</td>
+                        </tr>
+                        <tr>
+                            <td>ความชื้น <span class="tag-pill tag-moisture"><i class="fa-solid fa-droplet"></i>
+                                    Moisture</span></td>
+                            <td><em>M</em></td>
+                            <td><span class="val-pill blue">9 – 12</span></td>
+                            <td><span class="val-pill">0</span></td>
+                            <td>%</td>
+                            <td>วัดก่อน/หลังอบที่ 105°C</td>
+                        </tr>
+                        <tr>
+                            <td>เถ้า <span class="tag-pill tag-ash"><i class="fa-solid fa-mountain"></i> Ash</span></td>
+                            <td><em>A</em></td>
+                            <td><span class="val-pill">15 – 20</span></td>
+                            <td><span class="val-pill">17 – 22</span></td>
+                            <td>%</td>
+                            <td>ส่วนใหญ่เป็น SiO₂</td>
+                        </tr>
+                        <tr>
+                            <td>สารระเหย (Volatile Matter)</td>
+                            <td><em>VM</em></td>
+                            <td><span class="val-pill">55 – 65</span></td>
+                            <td><span class="val-pill">60 – 70</span></td>
+                            <td>%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>คาร์บอนคงตัว (Fixed Carbon)</td>
+                            <td><em>FC</em></td>
+                            <td><span class="val-pill">10 – 15</span></td>
+                            <td><span class="val-pill">12 – 17</span></td>
+                            <td>%</td>
+                            <td>FC = 100 − M − A − VM</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="6">Ultimate Analysis (การวิเคราะห์ธาตุ)</td>
+                        </tr>
+                        <tr>
+                            <td>คาร์บอน <span class="tag-pill tag-carbon"><i class="fa-solid fa-c"></i> Carbon</span>
+                            </td>
+                            <td><em>C</em></td>
+                            <td><span class="val-pill blue">33 – 40</span></td>
+                            <td><span class="val-pill blue">36 – 44</span></td>
+                            <td>%</td>
+                            <td>องค์ประกอบหลักในการเผาไหม้</td>
+                        </tr>
+                        <tr>
+                            <td>ไฮโดรเจน <span class="tag-pill tag-hydrogen"><i class="fa-solid fa-h"></i>
+                                    Hydrogen</span></td>
+                            <td><em>H</em></td>
+                            <td><span class="val-pill green">4.5 – 6.0</span></td>
+                            <td><span class="val-pill green">5.0 – 6.5</span></td>
+                            <td>%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>ออกซิเจน <span class="tag-pill tag-oxygen"><i class="fa-solid fa-o"></i> Oxygen</span>
+                            </td>
+                            <td><em>O</em></td>
+                            <td><span class="val-pill"
+                                    style="color:#ff7675;border-color:#e17055;background:rgba(231,76,60,0.15)">35 –
+                                    45</span></td>
+                            <td><span class="val-pill"
+                                    style="color:#ff7675;border-color:#e17055;background:rgba(231,76,60,0.15)">38 –
+                                    48</span></td>
+                            <td>%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>ไนโตรเจน <span class="tag-pill tag-nitrogen"><i class="fa-solid fa-n"></i>
+                                    Nitrogen</span></td>
+                            <td><em>N</em></td>
+                            <td><span class="val-pill">0.3 – 0.8</span></td>
+                            <td><span class="val-pill">0.35 – 0.9</span></td>
+                            <td>%</td>
+                            <td>ต่ำมากเทียบกับถ่านหิน</td>
+                        </tr>
+                        <tr>
+                            <td>กำมะถัน <span class="tag-pill tag-sulfur"><i class="fa-solid fa-s"></i> Sulfur</span>
+                            </td>
+                            <td><em>S</em></td>
+                            <td><span class="val-pill gold">0.05 – 0.2</span></td>
+                            <td><span class="val-pill gold">0.06 – 0.22</span></td>
+                            <td>%</td>
+                            <td>ต่ำมาก ↓ มลพิษ SO₂</td>
+                        </tr>
+
+                        <tr class="row-section">
+                            <td colspan="6">ค่าความร้อน (Calorific Value)</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ค่าความร้อนสูง (HHV)</strong></td>
+                            <td><em>H<sub>HHV</sub></em></td>
+                            <td><span class="val-pill highlight">3,300 – 3,600</span></td>
+                            <td><span class="val-pill highlight">13.8 – 15.1 MJ</span></td>
+                            <td>kcal/kg</td>
+                            <td>รวมความร้อนแฝงไอน้ำ</td>
+                        </tr>
+                        <tr class="row-result">
+                            <td><strong>ค่าความร้อนต่ำ (LHV)</strong></td>
+                            <td><em>H<sub>LHV</sub></em></td>
+                            <td><span class="val-pill highlight">3,000 – 3,200</span></td>
+                            <td><span class="val-pill highlight">12.5 – 13.4 MJ</span></td>
+                            <td>kcal/kg</td>
+                            <td>การใช้งานจริงในเตาเผา</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-summary">
+                <div class="res-item">
+                    <div class="res-label">Carbon (C)</div>
+                    <div class="res-value" style="color:#74b9ff;">~37%</div>
+                    <div class="res-unit">Dry Basis</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">Ash Content</div>
+                    <div class="res-value" style="color:#b2bec3;">~19%</div>
+                    <div class="res-unit">สูงผิดปกติ</div>
+                </div>
+                <div class="res-item">
+                    <div class="res-label">Sulfur (S)</div>
+                    <div class="res-value" style="color:var(--gold);">&lt;0.2%</div>
+                    <div class="res-unit">Clean Fuel ✓</div>
+                </div>
+                <div class="res-item featured">
+                    <div class="res-label">LHV มาตรฐาน</div>
+                    <div class="res-value">3,300</div>
+                    <div class="res-unit">kcal/kg</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
