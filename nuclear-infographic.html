@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พลังงานนิวเคลียร์ — อินโฟกราฟิค</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00d4ff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffe600;
+            --plasma: #7b2fff;
+            --dark-bg: #04080f;
+            --dark-card: #0d1b2a;
+            --dark-border: rgba(0, 212, 255, 0.15);
+            --text-primary: #e0f7ff;
+            --text-muted: #7a9ab5;
+            --danger: #ff4444;
+            --safe: #39ff14;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ===== ANIMATED BG ===== */
+        .bg-particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 100, 255, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(123, 47, 255, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 60% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* ===== LAYOUT ===== */
+        .page {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .atom-visual {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 3rem;
+        }
+
+        .nucleus {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nucleus-core {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffe600 0%, #ff6600 60%, #ff0000 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ffe600, 0 0 60px #ff6600, 0 0 100px rgba(255, 100, 0, 0.4);
+            animation: pulse-core 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-core {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px #ffe600, 0 0 60px #ff6600;
+            }
+
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 50px #ffe600, 0 0 100px #ff6600;
+            }
+        }
+
+        .orbit {
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            animation: spin linear infinite;
+        }
+
+        .orbit:nth-child(2) {
+            animation-duration: 4s;
+            transform: rotate(0deg) rotateX(70deg);
+        }
+
+        .orbit:nth-child(3) {
+            animation-duration: 6s;
+            transform: rotate(60deg) rotateX(70deg);
+        }
+
+        .orbit:nth-child(4) {
+            animation-duration: 5s;
+            transform: rotate(120deg) rotateX(70deg);
+        }
+
+        .electron {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+
+            /* simplified */
+        }
+
+        .orbit:nth-child(2) {
+            animation: spin2 4s linear infinite;
+        }
+
+        .orbit:nth-child(3) {
+            animation: spin3 6s linear infinite;
+        }
+
+        .orbit:nth-child(4) {
+            animation: spin4 5s linear infinite;
+        }
+
+        @keyframes spin2 {
+            from {
+                transform: rotateZ(0deg) rotateX(70deg);
+            }
+
+            to {
+                transform: rotateZ(360deg) rotateX(70deg);
+            }
+        }
+
+        @keyframes spin3 {
+            from {
+                transform: rotateZ(60deg) rotateX(70deg);
+            }
+
+            to {
+                transform: rotateZ(420deg) rotateX(70deg);
+            }
+        }
+
+        @keyframes spin4 {
+            from {
+                transform: rotateZ(120deg) rotateX(70deg);
+            }
+
+            to {
+                transform: rotateZ(480deg) rotateX(70deg);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50px;
+            padding: 0.4rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 50%, var(--plasma) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .stat-num {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px rgba(255, 230, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--neon-blue);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--plasma));
+            margin: 1rem auto 0;
+            border-radius: 3px;
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass {
+            background: rgba(13, 27, 42, 0.8);
+            border: 1px solid var(--dark-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+        }
+
+        .glass:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .process-flow {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '▶';
+            position: absolute;
+            right: -12px;
+            top: 30px;
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border: 2px solid;
+            position: relative;
+        }
+
+        .step-icon::before {
+            content: attr(data-n);
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .step-icon.blue {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .step-icon.yellow {
+            background: rgba(255, 230, 0, 0.1);
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .step-icon.green {
+            background: rgba(57, 255, 20, 0.1);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .step-icon.purple {
+            background: rgba(123, 47, 255, 0.1);
+            border-color: var(--plasma);
+            color: var(--plasma);
+        }
+
+        .step-icon.orange {
+            background: rgba(255, 100, 0, 0.1);
+            border-color: #ff6400;
+            color: #ff6400;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 0 0.5rem;
+        }
+
+        /* ===== FISSION DIAGRAM ===== */
+        .fission-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 230, 0, 0.15);
+        }
+
+        .fission-atom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .atom-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 0.85rem;
+            border: 2px solid;
+        }
+
+        .atom-circle.uranium {
+            background: rgba(255, 230, 0, 0.15);
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .atom-circle.neutron {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            width: 50px;
+            height: 50px;
+            font-size: 0.7rem;
+        }
+
+        .atom-circle.product {
+            background: rgba(57, 255, 20, 0.1);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            width: 60px;
+            height: 60px;
+        }
+
+        .atom-circle.energy {
+            background: rgba(255, 100, 0, 0.15);
+            border-color: #ff6400;
+            color: #ff6400;
+            width: 70px;
+            height: 70px;
+        }
+
+        .fission-arrow {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            opacity: 0.7;
+        }
+
+        .fission-plus {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .atom-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ===== REACTOR TYPES ===== */
+        .reactor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .reactor-card {
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--dark-border);
+            background: rgba(13, 27, 42, 0.9);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .reactor-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 212, 255, 0.08);
+        }
+
+        .reactor-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .reactor-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        .reactor-fullname {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .reactor-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .reactor-share {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-yellow);
+        }
+
+        .reactor-share-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== PROS CONS ===== */
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .pros-card {
+            border-color: rgba(57, 255, 20, 0.2);
+        }
+
+        .cons-card {
+            border-color: rgba(255, 68, 68, 0.2);
+        }
+
+        .pc-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pc-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .pc-icon.pros {
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--neon-green);
+        }
+
+        .pc-icon.cons {
+            background: rgba(255, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .pc-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .pc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .pc-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pc-list li::before {
+            content: '◆';
+            flex-shrink: 0;
+            font-size: 0.6rem;
+            margin-top: 0.3rem;
+        }
+
+        .pros .pc-list li::before {
+            color: var(--neon-green);
+        }
+
+        .cons .pc-list li::before {
+            color: var(--danger);
+        }
+
+        /* ===== WORLD MAP STATS ===== */
+        .world-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .world-card {
+            background: rgba(13, 27, 42, 0.8);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .world-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-4px);
+        }
+
+        .world-flag {
+            font-size: 2rem;
+        }
+
+        .world-country {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .world-pct {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+        }
+
+        .world-bar-wrap {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+        }
+
+        .world-bar {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--plasma));
+        }
+
+        .world-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== RADIATION ===== */
+        .radiation-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .rad-card {
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid;
+            transition: all 0.3s ease;
+        }
+
+        .rad-card.alpha {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: rgba(255, 215, 0, 0.04);
+        }
+
+        .rad-card.beta {
+            border-color: rgba(57, 255, 20, 0.3);
+            background: rgba(57, 255, 20, 0.04);
+        }
+
+        .rad-card.gamma {
+            border-color: rgba(255, 68, 68, 0.3);
+            background: rgba(255, 68, 68, 0.04);
+        }
+
+        .rad-symbol {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .alpha .rad-symbol {
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700;
+        }
+
+        .beta .rad-symbol {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .gamma .rad-symbol {
+            color: var(--danger);
+            text-shadow: 0 0 20px var(--danger);
+        }
+
+        .rad-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .rad-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .rad-penetration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .rad-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .rad-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .rad-dot.active {
+            opacity: 1;
+        }
+
+        .alpha .rad-dot.active {
+            background: #ffd700;
+        }
+
+        .beta .rad-dot.active {
+            background: var(--neon-green);
+        }
+
+        .gamma .rad-dot.active {
+            background: var(--danger);
+        }
+
+        /* ===== TIMELINE ===== */
+        .history-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-blue), var(--plasma));
+        }
+
+        .history-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .history-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .history-year {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            color: var(--neon-yellow);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .history-event {
+            font-size: 0.98rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .history-detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--dark-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer .neon {
+            color: var(--neon-blue);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width: 768px) {
+            .pros-cons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .radiation-types {
+                grid-template-columns: 1fr;
+            }
+
+            .process-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-step:not(:last-child)::after {
+                content: '▼';
+                right: auto;
+                top: auto;
+                bottom: -18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-particles"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="page">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="atom-visual">
+                <div class="nucleus">
+                    <div class="nucleus-core"></div>
+                </div>
+                <div class="orbit">
+                    <div class="electron"></div>
+                </div>
+                <div class="orbit">
+                    <div class="electron"></div>
+                </div>
+                <div class="orbit">
+                    <div class="electron"></div>
+                </div>
+            </div>
+            <div class="hero-badge">⚛ INFOGRAPHIC · NUCLEAR ENERGY</div>
+            <h1>พลังงานนิวเคลียร์</h1>
+            <p class="hero-sub">แหล่งพลังงานแห่งอนาคต — ทำความเข้าใจวิทยาศาสตร์ ศักยภาพ
+                และความปลอดภัยของพลังงานนิวเคลียร์ผ่านข้อมูลเชิงภาพ</p>
+            <div class="hero-stats">
+                <div class="stat-bubble">
+                    <span class="stat-num">440+</span>
+                    <span class="stat-label">เครื่องปฏิกรณ์<br>ที่ใช้งานทั่วโลก</span>
+                </div>
+                <div class="stat-bubble">
+                    <span class="stat-num">10%</span>
+                    <span class="stat-label">สัดส่วนไฟฟ้า<br>ของโลกจากนิวเคลียร์</span>
+                </div>
+                <div class="stat-bubble">
+                    <span class="stat-num">32</span>
+                    <span class="stat-label">ประเทศที่มี<br>โรงไฟฟ้านิวเคลียร์</span>
+                </div>
+                <div class="stat-bubble">
+                    <span class="stat-num">0g</span>
+                    <span class="stat-label">CO₂<br>ขณะผลิตไฟฟ้า</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">⚙ กระบวนการ</span>
+                    <h2 class="section-title">โรงไฟฟ้านิวเคลียร์ทำงานอย่างไร?</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <!-- FISSION DIAGRAM -->
+                <div class="fission-visual">
+                    <div class="fission-atom">
+                        <div class="atom-circle uranium">U-235</div>
+                        <div class="atom-label">ยูเรเนียม-235</div>
+                    </div>
+                    <span class="fission-plus">+</span>
+                    <div class="fission-atom">
+                        <div class="atom-circle neutron">n</div>
+                        <div class="atom-label">นิวตรอน</div>
+                    </div>
+                    <span class="fission-arrow">→</span>
+                    <div class="fission-atom">
+                        <div class="atom-circle energy">⚡ ความร้อน</div>
+                        <div class="atom-label">พลังงาน</div>
+                    </div>
+                    <span class="fission-plus">+</span>
+                    <div class="fission-atom">
+                        <div class="atom-circle product">Ba Kr</div>
+                        <div class="atom-label">ผลิตภัณฑ์ฟิสซัน</div>
+                    </div>
+                    <span class="fission-plus">+</span>
+                    <div class="fission-atom">
+                        <div class="atom-circle neutron">3n</div>
+                        <div class="atom-label">นิวตรอนใหม่</div>
+                    </div>
+                </div>
+
+                <!-- PROCESS STEPS -->
+                <div style="margin-top: 3rem;" class="glass">
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-icon yellow" data-n="1">⚛</div>
+                            <div class="step-title">เชื้อเพลิงนิวเคลียร์</div>
+                            <div class="step-desc">แท่งเชื้อเพลิง UO₂ ถูกบรรจุในแกนกลาง</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-icon orange" data-n="2">🔥</div>
+                            <div class="step-title">ปฏิกิริยาฟิสซัน</div>
+                            <div class="step-desc">นิวเคลียสแตกตัว ปล่อยความร้อนมหาศาล</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-icon blue" data-n="3">💧</div>
+                            <div class="step-title">ถ่ายเทความร้อน</div>
+                            <div class="step-desc">น้ำหล่อเย็นรับความร้อน กลายเป็นไอน้ำ</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-icon purple" data-n="4">🌀</div>
+                            <div class="step-title">ขับเทอร์ไบน์</div>
+                            <div class="step-desc">ไอน้ำความดันสูงหมุนกังหัน</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-icon green" data-n="5">⚡</div>
+                            <div class="step-title">ผลิตไฟฟ้า</div>
+                            <div class="step-desc">เครื่องกำเนิดไฟฟ้าแปลงพลังงานกล → ไฟฟ้า</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REACTOR TYPES ===== -->
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">🏭 ประเภทเครื่องปฏิกรณ์</span>
+                    <h2 class="section-title">ชนิดของเครื่องปฏิกรณ์นิวเคลียร์</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="reactor-grid">
+                    <div class="reactor-card">
+                        <div class="reactor-icon">💧</div>
+                        <div class="reactor-name">PWR</div>
+                        <div class="reactor-fullname">Pressurized Water Reactor</div>
+                        <div class="reactor-desc">ใช้น้ำความดันสูงเป็นสารหล่อเย็น ป้องกันการเดือด ที่นิยมที่สุดในโลก
+                        </div>
+                        <div class="reactor-share">70%</div>
+                        <div class="reactor-share-label">ของเครื่องปฏิกรณ์ทั่วโลก</div>
+                    </div>
+                    <div class="reactor-card">
+                        <div class="reactor-icon">♨️</div>
+                        <div class="reactor-name">BWR</div>
+                        <div class="reactor-fullname">Boiling Water Reactor</div>
+                        <div class="reactor-desc">น้ำเดือดภายในแกนกลาง กลายเป็นไอโดยตรง ออกแบบง่ายกว่า PWR</div>
+                        <div class="reactor-share">20%</div>
+                        <div class="reactor-share-label">ของเครื่องปฏิกรณ์ทั่วโลก</div>
+                    </div>
+                    <div class="reactor-card">
+                        <div class="reactor-icon">⚗️</div>
+                        <div class="reactor-name">PHWR</div>
+                        <div class="reactor-fullname">Pressurized Heavy Water</div>
+                        <div class="reactor-desc">ใช้น้ำหนักเป็นสารหล่อเย็น บรรจุเชื้อเพลิงยูเรเนียมธรรมชาติได้</div>
+                        <div class="reactor-share">7%</div>
+                        <div class="reactor-share-label">ของเครื่องปฏิกรณ์ทั่วโลก</div>
+                    </div>
+                    <div class="reactor-card">
+                        <div class="reactor-icon">🚀</div>
+                        <div class="reactor-name">Gen IV</div>
+                        <div class="reactor-fullname">เจเนอเรชัน 4 (อนาคต)</div>
+                        <div class="reactor-desc">เครื่องปฏิกรณ์เกลือหลอมเหลว, โซเดียมระบายความร้อน —
+                            ปลอดภัยและมีประสิทธิภาพสูง</div>
+                        <div class="reactor-share">Soon</div>
+                        <div class="reactor-share-label">อยู่ระหว่างพัฒนา</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROS & CONS ===== -->
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">⚖ การวิเคราะห์</span>
+                    <h2 class="section-title">ข้อดีและข้อเสีย</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="pros-cons-grid">
+                    <div class="glass pros pros-card">
+                        <div class="pc-header">
+                            <div class="pc-icon pros"><i class="fa fa-thumbs-up"></i></div>
+                            <div class="pc-title">✅ ข้อดีของพลังงานนิวเคลียร์</div>
+                        </div>
+                        <ul class="pc-list">
+                            <li>ไม่ปล่อย CO₂ ขณะผลิตไฟฟ้า — ช่วยแก้ปัญหาโลกร้อน</li>
+                            <li>ผลิตพลังงานได้ปริมาณมหาศาลจากเชื้อเพลิงน้อย</li>
+                            <li>ผลิตไฟฟ้าได้อย่างต่อเนื่อง 24/7 ไม่ขึ้นกับสภาพอากาศ</li>
+                            <li>มีความเชื่อถือได้สูง อายุการใช้งาน 40–80 ปี</li>
+                            <li>ความหนาแน่นพลังงานสูงที่สุดในบรรดาเชื้อเพลิง</li>
+                            <li>สร้างงานและกระตุ้นเศรษฐกิจภูมิภาค</li>
+                        </ul>
+                    </div>
+                    <div class="glass cons cons-card">
+                        <div class="pc-header">
+                            <div class="pc-icon cons"><i class="fa fa-triangle-exclamation"></i></div>
+                            <div class="pc-title">⚠️ ข้อเสียและความท้าทาย</div>
+                        </div>
+                        <ul class="pc-list">
+                            <li>ของเสียกัมมันตรังสีต้องเก็บอย่างปลอดภัยนับพันปี</li>
+                            <li>ต้นทุนก่อสร้างสูงมากและใช้เวลานาน</li>
+                            <li>ความเสี่ยงอุบัติเหตุ เช่น เชอร์โนบิล, ฟูกูชิมะ</li>
+                            <li>ความกังวลด้านการแพร่กระจายอาวุธนิวเคลียร์</li>
+                            <li>ต้องการที่ดินและน้ำจำนวนมาก</li>
+                            <li>การรื้อถอนโรงไฟฟ้าเก่ามีค่าใช้จ่ายสูง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WORLD STATS ===== -->
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">🌍 สถิติโลก</span>
+                    <h2 class="section-title">สัดส่วนไฟฟ้าจากพลังงานนิวเคลียร์</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="world-stats">
+                    <div class="world-card">
+                        <div class="world-flag">🇫🇷</div>
+                        <div class="world-country">ฝรั่งเศส</div>
+                        <div class="world-pct">70%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:70%"></div>
+                        </div>
+                        <div class="world-desc">ผู้นำโลกด้านพลังงานนิวเคลียร์ มีเครื่องปฏิกรณ์ 56 เครื่อง</div>
+                    </div>
+                    <div class="world-card">
+                        <div class="world-flag">🇸🇰</div>
+                        <div class="world-country">สโลวาเกีย</div>
+                        <div class="world-pct">57%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:57%"></div>
+                        </div>
+                        <div class="world-desc">สัดส่วนสูงสุดลำดับ 2 ของโลก</div>
+                    </div>
+                    <div class="world-card">
+                        <div class="world-flag">🇺🇦</div>
+                        <div class="world-country">ยูเครน</div>
+                        <div class="world-pct">55%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:55%"></div>
+                        </div>
+                        <div class="world-desc">พึ่งพาพลังงานนิวเคลียร์เป็นหลัก</div>
+                    </div>
+                    <div class="world-card">
+                        <div class="world-flag">🇺🇸</div>
+                        <div class="world-country">สหรัฐอเมริกา</div>
+                        <div class="world-pct">19%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:19%"></div>
+                        </div>
+                        <div class="world-desc">ผู้ผลิตพลังงานนิวเคลียร์มากที่สุดในโลกในแง่ปริมาณ (93 GW)</div>
+                    </div>
+                    <div class="world-card">
+                        <div class="world-flag">🇨🇳</div>
+                        <div class="world-country">จีน</div>
+                        <div class="world-pct">5%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:5%"></div>
+                        </div>
+                        <div class="world-desc">กำลังสร้างเครื่องปฏิกรณ์ใหม่มากกว่า 20 เครื่อง</div>
+                    </div>
+                    <div class="world-card">
+                        <div class="world-flag">🇯🇵</div>
+                        <div class="world-country">ญี่ปุ่น</div>
+                        <div class="world-pct">10%</div>
+                        <div class="world-bar-wrap">
+                            <div class="world-bar" style="width:10%"></div>
+                        </div>
+                        <div class="world-desc">ฟื้นฟูโรงไฟฟ้าหลังเหตุฟูกูชิมะปี 2011</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RADIATION TYPES ===== -->
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">☢ รังสี</span>
+                    <h2 class="section-title">ประเภทของรังสีนิวเคลียร์</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="radiation-types">
+                    <div class="rad-card alpha">
+                        <div class="rad-symbol">α</div>
+                        <div class="rad-name">รังสีแอลฟา (Alpha)</div>
+                        <div class="rad-desc">กระแสอนุภาคฮีเลียม (He²⁺) พลังงานสูงแต่ทะลุทะลวงน้อย กระดาษแผ่นเดียวกันได้
+                        </div>
+                        <div class="rad-penetration">
+                            <span>การทะลุผ่าน:</span>
+                            <div class="rad-dots">
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot"></div>
+                                <div class="rad-dot"></div>
+                                <div class="rad-dot"></div>
+                                <div class="rad-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rad-card beta">
+                        <div class="rad-symbol">β</div>
+                        <div class="rad-name">รังสีบีตา (Beta)</div>
+                        <div class="rad-desc">อิเล็กตรอนหรือโพซิตรอนความเร็วสูง ทะลุผ่านได้มากกว่าแอลฟา
+                            หยุดด้วยแผ่นอลูมิเนียม</div>
+                        <div class="rad-penetration">
+                            <span>การทะลุผ่าน:</span>
+                            <div class="rad-dots">
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot"></div>
+                                <div class="rad-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rad-card gamma">
+                        <div class="rad-symbol">γ</div>
+                        <div class="rad-name">รังสีแกมมา (Gamma)</div>
+                        <div class="rad-desc">คลื่นแม่เหล็กไฟฟ้าพลังงานสูง ทะลุทะลวงสูงมาก
+                            ต้องใช้ตะกั่วหรือคอนกรีตหนาหยุด</div>
+                        <div class="rad-penetration">
+                            <span>การทะลุผ่าน:</span>
+                            <div class="rad-dots">
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                                <div class="rad-dot active"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HISTORY ===== -->
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">📅 ประวัติศาสตร์</span>
+                    <h2 class="section-title">เหตุการณ์สำคัญ</h2>
+                    <div class="divider"></div>
+                </div>
+                <div style="max-width:700px; margin: 0 auto;">
+                    <div class="history-timeline">
+                        <div class="history-item">
+                            <div class="history-year">1938</div>
+                            <div class="history-event">การค้นพบปฏิกิริยาฟิสซัน</div>
+                            <div class="history-detail">Otto Hahn และ Fritz Strassmann
+                                ค้นพบว่านิวเคลียสยูเรเนียมสามารถแตกตัวได้</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1942</div>
+                            <div class="history-event">เครื่องปฏิกรณ์นิวเคลียร์เครื่องแรก (CP-1)</div>
+                            <div class="history-detail">Enrico Fermi สร้างเครื่องปฏิกรณ์ที่มหาวิทยาลัยชิคาโก
+                                สหรัฐอเมริกา</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1954</div>
+                            <div class="history-event">โรงไฟฟ้านิวเคลียร์เชิงพาณิชย์แห่งแรก</div>
+                            <div class="history-detail">โรงไฟฟ้า Obninsk ในสหภาพโซเวียต ผลิตไฟฟ้าได้ 5 MWe</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1986</div>
+                            <div class="history-event">อุบัติเหตุเชอร์โนบิล</div>
+                            <div class="history-detail">เหตุระเบิดที่โรงไฟฟ้าในยูเครน
+                                ทำให้มีการทบทวนมาตรฐานความปลอดภัยทั่วโลก</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">2011</div>
+                            <div class="history-event">อุบัติเหตุฟูกูชิมะ ไดอิจิ</div>
+                            <div class="history-detail">แผ่นดินไหวและสึนามิทำให้ระบบหล่อเย็นล้มเหลวในญี่ปุ่น</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">2022</div>
+                            <div class="history-event">ยุคฟื้นฟูนิวเคลียร์</div>
+                            <div class="history-detail">หลายประเทศประกาศแผนสร้างโรงไฟฟ้าใหม่เพื่อลด CO₂
+                                และรับมือวิกฤตพลังงาน</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <p>⚛ <span class="neon">อินโฟกราฟิคพลังงานนิวเคลียร์</span> · จัดทำโดย Thanarat Punya · 2026</p>
+            <p style="margin-top:0.5rem; font-size:0.78rem; opacity:0.5;">ข้อมูลอ้างอิง: IAEA, World Nuclear
+                Association, Nuclear Energy Institute</p>
+        </footer>
+
+    </div><!-- /.page -->
+</body>
+
+</html>
